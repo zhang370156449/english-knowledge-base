@@ -6,7 +6,7 @@
   <title>LexiFragment · 英语碎片化知识库</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Tailwind CSS 3 CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
@@ -24,41 +24,17 @@
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            // Anthropic signature clay/terracotta palette
             clay: {
               50: '#FDF8F6',
               100: '#F9EDE8',
               200: '#F4DCD2',
               300: '#EABFAD',
               400: '#DD957B',
-              500: '#D97757', // Anthropic signature coral
+              500: '#D97757', // Anthropic signature terracotta coral
               600: '#C96442',
               700: '#A74D30',
               800: '#873F28',
               900: '#6F3724',
-            },
-            sand: {
-              50: '#FAF9F5',
-              100: '#F5F2EB',
-              200: '#EBE6DC',
-              300: '#DDD5C7',
-              400: '#C2B9A7',
-              500: '#A49984',
-              600: '#7D7361',
-              700: '#5C5447',
-              800: '#3D372F',
-              900: '#1F1C18',
-            },
-            claude: {
-              bg: '#141413',        // Anthropic warm dark
-              surface: '#1E1E1C',   // Anthropic card dark
-              border: '#2C2B28',    // Hairline border
-              text: '#FAF9F5',
-              muted: '#A49F96',
-              lightBg: '#FAF9F5',   // Anthropic ivory light
-              lightSurface: '#FFFFFF',
-              lightBorder: '#E8E5DE',
-              lightMuted: '#6E6960',
             }
           }
         }
@@ -66,50 +42,93 @@
     }
   </script>
   <style>
-    /* Custom refined scrollbar */
+    /* CSS Variables for Anthropic Dark & Light Modes */
+    :root {
+      --bg-page: #FAF9F5;
+      --bg-header: rgba(250, 249, 245, 0.94);
+      --bg-card: #FFFFFF;
+      --bg-card-secondary: #F6F3EC;
+      --bg-modal: #FFFFFF;
+      --bg-modal-side: #FAF8F3;
+      --border-main: #E5E1D8;
+      --border-subtle: #ECE8E0;
+      --text-main: #141413;
+      --text-secondary: #57544D;
+      --text-muted: #878278;
+      --text-badge: #C86544;
+      --bg-badge: rgba(217, 119, 87, 0.12);
+      --border-badge: rgba(217, 119, 87, 0.28);
+      --tag-bg: #F0EDE6;
+      --tag-text: #5C5850;
+      --tag-border: #E4E0D6;
+      --pill-active-bg: #1F1E1D;
+      --pill-active-text: #FFFFFF;
+      --pill-inactive-text: #615D55;
+      --pill-hover-bg: #EFEBE3;
+      --shadow-card: 0 1px 3px rgba(31, 28, 24, 0.05), 0 6px 16px -4px rgba(31, 28, 24, 0.04);
+      --shadow-hover: 0 16px 36px -10px rgba(31, 28, 24, 0.12);
+      --modal-overlay: rgba(20, 20, 19, 0.75);
+    }
+
+    html.dark {
+      --bg-page: #141413;
+      --bg-header: rgba(20, 20, 19, 0.94);
+      --bg-card: #1E1E1C;
+      --bg-card-secondary: #181816;
+      --bg-modal: #181816;
+      --bg-modal-side: #141413;
+      --border-main: #2C2B28;
+      --border-subtle: #232220;
+      --text-main: #FAF9F5;
+      --text-secondary: #A49F96;
+      --text-muted: #736E65;
+      --text-badge: #DD957B;
+      --bg-badge: rgba(217, 119, 87, 0.15);
+      --border-badge: rgba(217, 119, 87, 0.35);
+      --tag-bg: rgba(255, 255, 255, 0.04);
+      --tag-text: #A49F96;
+      --tag-border: #2C2B28;
+      --pill-active-bg: #2C2B28;
+      --pill-active-text: #FFFFFF;
+      --pill-inactive-text: #A49F96;
+      --pill-hover-bg: #22211F;
+      --shadow-card: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
+      --shadow-hover: 0 16px 36px -10px rgba(0, 0, 0, 0.65);
+      --modal-overlay: rgba(0, 0, 0, 0.88);
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* Refined scrollbar */
     ::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(164, 159, 150, 0.25);
+      background: rgba(164, 159, 150, 0.28);
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: rgba(217, 119, 87, 0.5);
+      background: rgba(217, 119, 87, 0.55);
     }
     
-    /* Anthropic paper & dark textures */
-    .dark body {
-      background-color: #141413;
-      color: #FAF9F5;
+    .lexi-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-main);
+      box-shadow: var(--shadow-card);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    body.light {
-      background-color: #FAF9F5;
-      color: #1F1C18;
-    }
-    
-    .claude-card {
-      background-color: #1E1E1C;
-      border: 1px solid #2C2B28;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .claude-card:hover {
-      border-color: rgba(217, 119, 87, 0.4);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
-    }
-    .light .claude-card {
-      background-color: #FFFFFF;
-      border: 1px solid #E8E5DE;
-      box-shadow: 0 2px 8px -2px rgba(31, 28, 24, 0.04);
-    }
-    .light .claude-card:hover {
-      border-color: rgba(201, 100, 66, 0.35);
-      box-shadow: 0 12px 30px -10px rgba(31, 28, 24, 0.08);
+    .lexi-card:hover {
+      border-color: rgba(217, 119, 87, 0.5);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
     }
 
     .modal-backdrop {
@@ -119,259 +138,275 @@
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
     }
 
-    /* Ambient Warm Glow */
-    .ambient-glow {
-      background: radial-gradient(circle 900px at 50% -120px, rgba(217, 119, 87, 0.08), transparent 70%);
-    }
-    .light .ambient-glow {
-      background: radial-gradient(circle 900px at 50% -120px, rgba(217, 119, 87, 0.05), transparent 70%);
+    /* Active pill indicator */
+    .pill-active {
+      background-color: var(--pill-active-bg) !important;
+      color: var(--pill-active-text) !important;
+      font-weight: 600 !important;
     }
   </style>
 </head>
-<body class="min-h-screen antialiased font-sans selection:bg-clay-500 selection:text-white transition-colors duration-200">
+<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-clay-500/25 selection:text-clay-500">
 
-  <!-- Ambient Light Header Glow -->
-  <div class="fixed inset-0 ambient-glow pointer-events-none z-0"></div>
-
-  <!-- App Wrapper -->
-  <div class="relative z-10 flex flex-col min-h-screen">
-
-    <!-- Header Navigation -->
-    <header class="sticky top-0 z-40 border-b border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] bg-[#141413]/90 dark:bg-[#141413]/90 light:bg-[#FAF9F5]/90 backdrop-blur-md">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        
-        <!-- Logo Brand -->
-        <div class="flex items-center gap-3 cursor-pointer" onclick="resetFilters()">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-clay-500 to-clay-700 flex items-center justify-center text-white shadow-md shadow-clay-500/20">
-            <i data-lucide="compass" class="w-5 h-5 text-[#FAF9F5]"></i>
-          </div>
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="font-serif font-semibold text-lg tracking-tight text-[#FAF9F5] dark:text-[#FAF9F5] light:text-[#1F1C18]">LexiFragment</span>
-              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-clay-500/10 text-clay-400 border border-clay-500/20 font-medium">Edition 2.0</span>
-            </div>
-            <p class="text-[11px] text-sand-400 -mt-0.5 font-sans">英语碎片化知识库 · 母语者心智工坊</p>
-          </div>
+  <!-- ======================================================== -->
+  <!-- HEADER & TOP NAVIGATION                                  -->
+  <!-- ======================================================== -->
+  <header class="sticky top-0 z-40 border-b backdrop-blur-md transition-colors duration-200" style="background-color: var(--bg-header); border-color: var(--border-main);">
+    <div class="max-w-[1780px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-14 h-16 sm:h-20 flex items-center justify-between gap-4">
+      
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-3.5 cursor-pointer shrink-0" onclick="resetFilters()">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-clay-500 to-clay-700 flex items-center justify-center text-white shadow-md shadow-clay-500/30">
+          <i data-lucide="book-marked" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]"></i>
         </div>
-
-        <!-- Global Search Bar -->
-        <div class="flex-1 max-w-md hidden md:block relative">
-          <div class="relative">
-            <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-sand-500"></i>
-            <input 
-              id="searchInput" 
-              type="text" 
-              placeholder="搜索考点、词根、句型、单词、标题... (按 '/' 聚焦)"
-              class="w-full pl-10 pr-9 py-2 rounded-xl text-xs bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-[#FFFFFF] border border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] text-sand-100 dark:text-sand-100 light:text-sand-900 placeholder-sand-500 focus:outline-none focus:ring-1 focus:ring-clay-500 focus:border-clay-500 transition-all"
-              oninput="handleSearch(this.value)"
-            >
-            <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-sand-500 hover:text-white p-0.5">
-              <i data-lucide="x" class="w-3.5 h-3.5"></i>
-            </button>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-serif font-bold text-xl sm:text-2xl tracking-tight" style="color: var(--text-main);">LexiFragment</span>
+            <span class="hidden sm:inline-block text-[11px] font-mono px-2 py-0.5 rounded-full font-semibold border" style="background-color: var(--bg-badge); color: var(--text-badge); border-color: var(--border-badge);">v2.1</span>
           </div>
-        </div>
-
-        <!-- Right Header Actions -->
-        <div class="flex items-center gap-2.5">
-          <!-- Favorite Filter Button -->
-          <button 
-            id="favToggleBtn"
-            onclick="toggleFavoriteFilter()" 
-            class="px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 border border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-white text-sand-300 dark:text-sand-300 light:text-sand-700 hover:border-clay-500/40 transition-all"
-            title="查看我的收藏"
-          >
-            <i data-lucide="bookmark" class="w-3.5 h-3.5 text-clay-400"></i>
-            <span class="hidden sm:inline">收藏夹</span>
-            <span id="favCountBadge" class="px-1.5 py-0.2 rounded-full bg-clay-500/20 text-clay-400 text-[10px] font-mono">0</span>
-          </button>
-
-          <!-- Add Fragment Button -->
-          <button 
-            onclick="openAddModal()" 
-            class="px-3.5 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 bg-clay-500 hover:bg-clay-600 text-white shadow-sm shadow-clay-500/25 transition-all active:scale-95"
-          >
-            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-            <span>补充知识</span>
-          </button>
-
-          <!-- Theme Switcher -->
-          <button 
-            onclick="toggleTheme()" 
-            class="w-9 h-9 rounded-xl border border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] flex items-center justify-center text-sand-400 hover:text-white dark:hover:text-white light:hover:text-black transition-all bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-white"
-            title="切换主题"
-          >
-            <i id="themeIcon" data-lucide="moon" class="w-4 h-4"></i>
-          </button>
+          <p class="hidden md:block text-xs font-serif italic" style="color: var(--text-muted);">英语碎片化知识库 · 母语者思维 · 词根串记 · 句型底层</p>
         </div>
       </div>
 
-      <!-- Mobile Search Bar -->
-      <div class="px-4 pb-3 md:hidden">
-        <div class="relative">
-          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-sand-500"></i>
+      <!-- Quick Search Bar (Prominent & Spacious) -->
+      <div class="flex-1 max-w-xl hidden md:block relative">
+        <div class="relative flex items-center">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 pointer-events-none" style="color: var(--text-muted);"></i>
           <input 
             type="text" 
-            placeholder="搜索语法、词根、句型、单词..."
-            class="w-full pl-10 pr-8 py-2 rounded-xl text-xs bg-[#1E1E1C] border border-[#2C2B28] text-sand-100 placeholder-sand-500 focus:outline-none focus:ring-1 focus:ring-clay-500"
+            id="searchInput"
+            placeholder="搜索词根 (port/rupt/fuse)、语法点 (时态/从句) 或知识标题... (按 '/' 聚焦)"
             oninput="handleSearch(this.value)"
+            class="w-full pl-11 pr-10 py-2.5 rounded-xl text-sm font-medium border focus:outline-none focus:ring-2 focus:ring-clay-500/50 transition-all"
+            style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
           >
-        </div>
-      </div>
-    </header>
-
-    <!-- Main Body Container -->
-    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-
-      <!-- Editorial Hero Banner -->
-      <section class="mb-10 p-6 sm:p-8 rounded-2xl bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-white border border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] relative overflow-hidden">
-        <div class="max-w-3xl space-y-3">
-          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-clay-500/10 border border-clay-500/20 text-clay-400 text-xs font-mono">
-            <span class="w-1.5 h-1.5 rounded-full bg-clay-400"></span>
-            CURATED FRAGMENTS · 50 核心微切片已就绪
-          </div>
-          <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#FAF9F5] dark:text-[#FAF9F5] light:text-[#1F1C18] leading-snug">
-            把英语学碎，在碎片中重构<em class="italic text-clay-400 font-serif">母语者直觉</em>
-          </h1>
-          <p class="text-sand-400 text-xs sm:text-sm leading-relaxed max-w-2xl">
-            告别死板的语法公式与词典硬背。通过空间几何、认知隐喻与词根演变，在每天 3 分钟的视频与精读中建立语感回路。
-          </p>
-        </div>
-
-        <!-- Quick Stats Pill Bar -->
-        <div class="mt-6 pt-6 border-t border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] flex flex-wrap items-center gap-6 text-xs text-sand-400">
-          <div class="flex items-center gap-2">
-            <span class="text-sand-500 font-mono">短视频:</span>
-            <span id="statVideos" class="font-mono font-semibold text-clay-400">50 个高清切片</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-sand-500 font-mono">文章专区:</span>
-            <span id="statArticles" class="text-sand-400">预留就绪 (放入 articles 目录自动同步)</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-sand-500 font-mono">书籍专区:</span>
-            <span id="statBooks" class="text-sand-400">预留就绪 (放入 books 目录自动同步)</span>
-          </div>
-          <div class="ml-auto hidden sm:flex items-center gap-1.5 text-sand-500 text-[11px]">
-            <i data-lucide="refresh-cw" class="w-3 h-3 text-clay-400"></i>
-            <span>双击 <code class="text-clay-400 font-mono">sync_library.bat</code> 可一键同步新视频</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Category Filter Tabs & Creators -->
-      <div class="space-y-4 mb-8">
-        
-        <!-- Level 1: Category Filter -->
-        <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE]">
-          
-          <div class="flex flex-wrap items-center gap-2" id="categoryTabs">
-            <button onclick="setCategory('all')" data-cat="all" class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-clay-500 text-white shadow-sm shadow-clay-500/20">
-              全部知识 (<span id="countAll">50</span>)
-            </button>
-            <button onclick="setCategory('短视频')" data-cat="短视频" class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-white text-sand-300 dark:text-sand-300 light:text-sand-700 border border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] hover:border-clay-500/40 hover:text-white">
-              🎬 教学短视频 (<span id="countVideos">50</span>)
-            </button>
-            <button onclick="setCategory('深度文章')" data-cat="深度文章" class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-white text-sand-400 dark:text-sand-400 light:text-sand-600 border border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] hover:border-clay-500/40">
-              📝 深度文章 <span class="text-[10px] text-clay-400 font-mono">(预留区)</span>
-            </button>
-            <button onclick="setCategory('精选书籍')" data-cat="精选书籍" class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-white text-sand-400 dark:text-sand-400 light:text-sand-600 border border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] hover:border-clay-500/40">
-              📚 权威书籍 <span class="text-[10px] text-clay-400 font-mono">(预留区)</span>
-            </button>
-          </div>
-
-          <!-- Dynamic Creator Buttons -->
-          <div class="flex items-center gap-1.5 overflow-x-auto pb-1" id="authorPillsContainer">
-            <!-- Injected by JS -->
-          </div>
-
-        </div>
-
-        <!-- Level 2: Tag Pills -->
-        <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs no-scrollbar">
-          <span class="text-sand-500 shrink-0 font-medium">主题维度:</span>
-          <div id="tagPillsContainer" class="flex items-center gap-1.5 flex-nowrap shrink-0">
-            <!-- Injected by JS -->
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Filter Result Summary Bar -->
-      <div class="flex items-center justify-between text-xs text-sand-400 mb-6 px-1">
-        <div>
-          收录 <span class="text-clay-400 font-semibold font-mono" id="visibleCount">50</span> 组精炼知识切片
-        </div>
-        <div class="flex items-center gap-3">
-          <label class="flex items-center gap-1.5 cursor-pointer">
-            <span class="text-sand-500">排序:</span>
-            <select id="sortSelect" onchange="handleSort(this.value)" class="bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-white border border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] text-sand-200 dark:text-sand-200 light:text-sand-800 text-xs rounded-lg px-2.5 py-1 focus:outline-none">
-              <option value="default">默认编号 (最新到最早)</option>
-              <option value="size">文件体积</option>
-              <option value="title">关键词顺序</option>
-            </select>
-          </label>
+          <button id="searchClearBtn" onclick="clearSearch()" class="hidden absolute right-3 text-xs p-1 rounded-md transition-colors" style="color: var(--text-muted);">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
         </div>
       </div>
 
-      <!-- Cards Grid (Video, Article, Book) -->
-      <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- Rendered by JavaScript -->
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <!-- Favorite Filter Button -->
+        <button 
+          id="favToggleBtn"
+          onclick="toggleFavoriteFilter()" 
+          class="px-3.5 py-2 rounded-xl text-sm font-medium flex items-center gap-2 border hover:border-clay-500/50 transition-all"
+          style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-secondary);"
+          title="只看我收藏的知识"
+        >
+          <i data-lucide="bookmark" class="w-4 h-4 text-clay-500"></i>
+          <span class="hidden sm:inline">收藏夹</span>
+          <span id="favCountBadge" class="text-xs font-mono px-1.5 py-0.2 rounded-full font-bold" style="background-color: var(--bg-badge); color: var(--text-badge);">0</span>
+        </button>
+
+        <!-- Add Custom Knowledge -->
+        <button 
+          onclick="openAddModal()" 
+          class="px-3.5 py-2 rounded-xl text-sm font-medium flex items-center gap-1.5 text-white bg-clay-500 hover:bg-clay-600 shadow-sm shadow-clay-500/25 transition-all"
+          title="补充新的视频、文章或书籍"
+        >
+          <i data-lucide="plus" class="w-4 h-4 stroke-[2.5]"></i>
+          <span class="hidden sm:inline">补充内容</span>
+        </button>
+
+        <!-- Theme Switcher -->
+        <button 
+          id="themeToggleBtn"
+          onclick="toggleTheme()" 
+          class="w-10 h-10 rounded-xl border flex items-center justify-center transition-all hover:scale-105"
+          style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-secondary);"
+          title="切换日间 / 夜间模式"
+        >
+          <i id="themeIcon" data-lucide="sun" class="w-4 h-4"></i>
+        </button>
       </div>
 
-      <!-- Empty / Reserved Area State -->
-      <div id="emptyState" class="hidden py-16 text-center">
-        <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#1E1E1C] border border-[#2C2B28] flex items-center justify-center text-sand-400">
-          <i id="emptyIcon" data-lucide="book-marked" class="w-7 h-7 text-clay-400"></i>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- MAIN CONTAINER (Spacious & Responsive)                   -->
+  <!-- ======================================================== -->
+  <main class="flex-1 max-w-[1780px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-14 py-8">
+    
+    <!-- Mobile Search Bar (Only visible on small screens) -->
+    <div class="mb-6 md:hidden">
+      <div class="relative flex items-center">
+        <i data-lucide="search" class="w-4 h-4 absolute left-3.5 pointer-events-none" style="color: var(--text-muted);"></i>
+        <input 
+          type="text" 
+          placeholder="搜索词根 (port/rupt)、语法点或标题..."
+          oninput="handleSearch(this.value)"
+          class="w-full pl-11 pr-10 py-2.5 rounded-xl text-sm border focus:outline-none focus:ring-2 focus:ring-clay-500/50"
+          style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+        >
+      </div>
+    </div>
+
+    <!-- Editorial Hero / Knowledge Base Statement -->
+    <section class="mb-8 p-6 sm:p-9 rounded-2xl border relative overflow-hidden transition-colors" style="background-color: var(--bg-card); border-color: var(--border-main);">
+      <!-- Subtle Claude Corner Accent Pattern -->
+      <div class="absolute -right-16 -top-16 w-64 h-64 bg-gradient-to-br from-clay-500/10 to-transparent rounded-full blur-2xl pointer-events-none"></div>
+
+      <div class="max-w-4xl space-y-3 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wide uppercase border" style="background-color: var(--bg-badge); color: var(--text-badge); border-color: var(--border-badge);">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Curated Cognitive Framework
         </div>
-        <h3 id="emptyTitle" class="text-base font-serif font-medium text-sand-100">专区预留就绪</h3>
-        <p id="emptyDesc" class="text-xs text-sand-400 mt-1.5 max-w-md mx-auto leading-relaxed">
-          当你找到适合的文章或书籍时，直接放入对应目录并同步即可在此优雅呈现。
+        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight leading-snug" style="color: var(--text-main);">
+          用母语者底层思维，重构你的英语认知体系。
+        </h1>
+        <p class="text-sm sm:text-base leading-relaxed max-w-3xl" style="color: var(--text-secondary);">
+          告别死记硬背。收录全网高赞词根手绘图解、语感底层心法、高频形近词辨析与发音连读逻辑，利用碎片时间在沉浸式剧场中随时随地通透掌握。
         </p>
-        <div id="emptyActions" class="mt-5 flex items-center justify-center gap-2">
-          <!-- Dynamic Actions -->
-        </div>
       </div>
 
-    </main>
+      <!-- Live Knowledge Stats Counters -->
+      <div class="mt-7 pt-6 border-t flex flex-wrap items-center gap-6 sm:gap-10 text-sm font-medium" style="border-color: var(--border-main); color: var(--text-secondary);">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="film" class="w-4 h-4 text-clay-500"></i>
+          <span>短视频切片:</span>
+          <span id="statVideos" class="font-mono font-bold text-base text-clay-500">105</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="newspaper" class="w-4 h-4 text-clay-500"></i>
+          <span>深度文章:</span>
+          <span id="statArticles" class="font-mono font-bold text-base" style="color: var(--text-main);">0</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded" style="background-color: var(--bg-card-secondary); color: var(--text-muted);">可自扩充</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="library" class="w-4 h-4 text-clay-500"></i>
+          <span>精选书籍:</span>
+          <span id="statBooks" class="font-mono font-bold text-base" style="color: var(--text-main);">0</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded" style="background-color: var(--bg-card-secondary); color: var(--text-muted);">可自扩充</span>
+        </div>
+        <div class="ml-auto hidden lg:flex items-center gap-2 text-xs font-mono" style="color: var(--text-muted);">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i> 100% 离线与公网分段流媒体自适应支持
+        </div>
+      </div>
+    </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] py-8 mt-16 bg-[#141413] dark:bg-[#141413] light:bg-[#FAF9F5]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-sand-500">
+    <!-- ======================================================== -->
+    <!-- FILTER TABS & MULTI-CREATOR NAVIGATION                   -->
+    <!-- ======================================================== -->
+    <div class="mb-7 space-y-4">
+      
+      <!-- Level 1: Category Filter (All / Videos / Articles / Books) -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b" style="border-color: var(--border-main);">
         <div class="flex items-center gap-2">
-          <span class="font-serif font-semibold text-sand-300">LexiFragment</span>
-          <span>·</span>
-          <span>个人英语碎片化知识库</span>
+          <button onclick="setCategory('all')" data-cat="all" class="cat-pill pill-active px-4 py-2 rounded-xl text-sm font-semibold transition-all">
+            全部内容 (<span id="catTotal">105</span>)
+          </button>
+          <button onclick="setCategory('短视频')" data-cat="短视频" class="cat-pill px-4 py-2 rounded-xl text-sm font-semibold transition-all border" style="border-color: var(--border-main); color: var(--text-secondary);">
+            短视频剧场 (<span id="catVideos">105</span>)
+          </button>
+          <button onclick="setCategory('深度文章')" data-cat="深度文章" class="cat-pill px-4 py-2 rounded-xl text-sm font-semibold transition-all border" style="border-color: var(--border-main); color: var(--text-secondary);">
+            深度文章 (<span id="catArticles">0</span>)
+          </button>
+          <button onclick="setCategory('精选书籍')" data-cat="精选书籍" class="cat-pill px-4 py-2 rounded-xl text-sm font-semibold transition-all border" style="border-color: var(--border-main); color: var(--text-secondary);">
+            精选原版书 (<span id="catBooks">0</span>)
+          </button>
         </div>
-        <div class="flex flex-wrap items-center gap-4 text-sand-500">
-          <span>存储路径: <code class="font-mono text-sand-400">k:\BaiduSyncdisk\英语碎片化知识库</code></span>
-          <span>·</span>
-          <span>双击 <code class="font-mono text-clay-400">sync_library.bat</code> 随时同步新添加视频</span>
+
+        <!-- Level 2: Creator Filter Pills (Dynamic) -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full" id="authorPillsContainer">
+          <!-- Dynamically populated via JS -->
         </div>
       </div>
-    </footer>
-  </div>
+
+      <!-- Level 3: Hot Keyword / Topic Tag Filters -->
+      <div class="flex items-center gap-2 overflow-x-auto py-1 text-xs" id="tagsContainer">
+        <!-- Dynamically populated via JS -->
+      </div>
+
+      <!-- Filter Result Summary & Sort Bar -->
+      <div class="flex items-center justify-between pt-2 text-sm" style="color: var(--text-muted);">
+        <div class="flex items-center gap-2 font-medium">
+          <span>展示结果:</span>
+          <span id="visibleCount" class="font-mono font-bold text-clay-500">105</span>
+          <span id="filterDesc">条切片</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <label class="text-xs font-medium hidden sm:inline" style="color: var(--text-muted);">排序:</label>
+          <select id="sortSelect" onchange="handleSort(this.value)" class="border text-xs rounded-xl px-3 py-1.5 focus:outline-none transition-colors" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);">
+            <option value="default">默认序号 (EP# 升序)</option>
+            <option value="alpha">词根/标题字母 A-Z</option>
+            <option value="size">文件大小 (降序)</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- CARDS GRID CONTAINER (Wide Fluid 5-Col Layout)           -->
+    <!-- ======================================================== -->
+    <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6 xl:gap-7">
+      <!-- Dynamically Rendered by JavaScript -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden text-center py-24 px-4">
+      <div class="w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-4 border" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-muted);">
+        <i data-lucide="search-x" class="w-8 h-8"></i>
+      </div>
+      <h3 class="font-serif text-xl font-semibold mb-2" style="color: var(--text-main);">未找到匹配的知识切片</h3>
+      <p id="emptyDesc" class="text-sm max-w-md mx-auto leading-relaxed" style="color: var(--text-secondary);">
+        请尝试调整关键词、词根或清除当前的博主/标签筛选。
+      </p>
+      <div class="mt-6">
+        <button onclick="resetFilters()" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all border hover:border-clay-500/50" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);">
+          清除全部筛选条件
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- FOOTER                                                   -->
+  <!-- ======================================================== -->
+  <footer class="border-t py-10 mt-16 transition-colors" style="background-color: var(--bg-page); border-color: var(--border-main);">
+    <div class="max-w-[1780px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-14 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm" style="color: var(--text-muted);">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 rounded-lg bg-clay-500 flex items-center justify-center text-white text-xs font-bold">L</div>
+        <span class="font-serif font-semibold" style="color: var(--text-main);">LexiFragment</span>
+        <span class="text-xs">· 个人英语碎片化认知库</span>
+      </div>
+      <div class="flex items-center gap-6 text-xs">
+        <span>快捷键: <kbd class="px-2 py-0.5 rounded text-[11px] font-mono border" style="background-color: var(--bg-card); border-color: var(--border-main);">/</kbd> 聚焦搜索</span>
+        <span><kbd class="px-2 py-0.5 rounded text-[11px] font-mono border" style="background-color: var(--bg-card); border-color: var(--border-main);">Space</kbd> 暂停/播放</span>
+        <span><kbd class="px-2 py-0.5 rounded text-[11px] font-mono border" style="background-color: var(--bg-card); border-color: var(--border-main);">Esc</kbd> 退出剧场</span>
+      </div>
+      <div class="text-xs">
+        Anthropic Claude Design Aesthetics
+      </div>
+    </div>
+  </footer>
 
   <!-- ======================================================== -->
   <!-- MODAL: Theater Video Player Modal                        -->
   <!-- ======================================================== -->
-  <div id="videoModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-xl modal-backdrop">
-    <div class="relative w-full max-w-5xl bg-[#181816] border border-[#2C2B28] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] modal-content">
+  <div id="videoModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 backdrop-blur-xl modal-backdrop" style="background-color: var(--modal-overlay);">
+    <div class="relative w-full max-w-6xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] modal-content border" style="background-color: var(--bg-modal); border-color: var(--border-main);">
       
       <!-- Modal Header -->
-      <div class="px-5 py-3.5 border-b border-[#2C2B28] flex items-center justify-between gap-4 bg-[#141413]">
+      <div class="px-6 py-4 border-b flex items-center justify-between gap-4" style="background-color: var(--bg-modal); border-color: var(--border-main);">
         <div class="flex items-center gap-3 min-w-0">
-          <span id="modalKeywordBadge" class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-clay-500/20 text-clay-400 border border-clay-500/30 shrink-0">
+          <span id="modalKeywordBadge" class="px-3 py-1 rounded-full text-sm font-mono font-bold shrink-0 border" style="background-color: var(--bg-badge); color: var(--text-badge); border-color: var(--border-badge);">
             KEYWORD
           </span>
-          <h2 id="modalVideoTitle" class="text-sm sm:text-base font-semibold text-[#FAF9F5] truncate font-sans">
+          <h2 id="modalVideoTitle" class="text-base sm:text-lg md:text-xl font-bold truncate font-sans" style="color: var(--text-main);">
             视频标题
           </h2>
         </div>
-        <div class="flex items-center gap-2 shrink-0">
-          <button id="modalFavBtn" onclick="toggleModalFav()" class="p-1.5 rounded-lg text-sand-400 hover:text-clay-400 transition-all" title="收藏">
+        <div class="flex items-center gap-2.5 shrink-0">
+          <button id="modalFavBtn" onclick="toggleModalFav()" class="p-2 rounded-xl transition-all border hover:border-clay-500/50" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-secondary);" title="收藏">
             <i data-lucide="bookmark" class="w-5 h-5"></i>
           </button>
-          <button onclick="closeVideoModal()" class="p-1.5 rounded-lg text-sand-400 hover:text-white transition-all" title="关闭 (Esc)">
+          <button onclick="closeVideoModal()" class="p-2 rounded-xl transition-all border hover:border-clay-500/50" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-secondary);" title="关闭 (Esc)">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
         </div>
@@ -381,31 +416,31 @@
       <div class="flex-1 overflow-hidden flex flex-col lg:flex-row">
         
         <!-- Video Screen -->
-        <div class="flex-1 bg-black flex flex-col justify-center items-center relative min-h-[320px] sm:min-h-[460px]">
+        <div class="flex-1 bg-black flex flex-col justify-center items-center relative min-h-[320px] sm:min-h-[480px]">
           <video 
             id="activeVideo" 
             controls 
             autoplay 
             playsinline 
-            class="w-full h-full max-h-[65vh] object-contain focus:outline-none"
+            class="w-full h-full max-h-[68vh] object-contain focus:outline-none"
             onended="playNextVideo()"
           ></video>
         </div>
 
         <!-- Sidebar Playlist & Insights -->
-        <div class="w-full lg:w-80 border-t lg:border-t-0 lg:border-l border-[#2C2B28] bg-[#141413] flex flex-col shrink-0">
+        <div class="w-full lg:w-96 border-t lg:border-t-0 lg:border-l flex flex-col shrink-0" style="background-color: var(--bg-modal-side); border-color: var(--border-main);">
           
-          <div class="p-3 border-b border-[#2C2B28] flex items-center justify-between text-xs font-semibold text-sand-400">
+          <div class="px-4 py-3 border-b flex items-center justify-between text-xs font-semibold" style="border-color: var(--border-main); color: var(--text-secondary);">
             <span class="flex items-center gap-1.5">
-              <i data-lucide="list-video" class="w-4 h-4 text-clay-400"></i> 同作者合集播放列表
+              <i data-lucide="list-video" class="w-4 h-4 text-clay-500"></i> 同作者连续学习播放列表
             </span>
-            <span id="playlistCount" class="font-mono text-[11px] text-sand-500">28 集</span>
+            <span id="playlistCount" class="font-mono text-xs font-bold text-clay-500">28 集</span>
           </div>
 
           <!-- Video Subtitle / Core Insight -->
-          <div class="p-3.5 bg-white/[0.02] border-b border-[#2C2B28] space-y-1.5">
-            <div class="text-[11px] font-mono text-clay-400 uppercase tracking-wider">CORE INSIGHT 核心心智</div>
-            <div id="modalVideoSubtitle" class="text-xs text-sand-300 leading-relaxed max-h-24 overflow-y-auto">
+          <div class="p-4 border-b space-y-2" style="border-color: var(--border-main); background-color: var(--bg-card);">
+            <div class="text-[11px] font-mono uppercase tracking-wider font-bold" style="color: var(--text-badge);">CORE INSIGHT 核心心智</div>
+            <div id="modalVideoSubtitle" class="text-sm leading-relaxed max-h-28 overflow-y-auto" style="color: var(--text-main);">
               视频介绍信息
             </div>
             <div class="flex flex-wrap gap-1.5 pt-2" id="modalTagsContainer">
@@ -414,159 +449,137 @@
           </div>
 
           <!-- Speed Switcher -->
-          <div class="px-3 py-2 border-b border-[#2C2B28] flex items-center justify-between text-xs">
-            <span class="text-sand-500 text-[11px]">倍速播放:</span>
-            <div class="flex items-center gap-1">
-              <button onclick="setPlaySpeed(0.75)" class="speed-btn px-2 py-0.5 rounded text-[11px] font-mono text-sand-400 hover:text-white">0.75x</button>
-              <button onclick="setPlaySpeed(1.0)" class="speed-btn px-2 py-0.5 rounded text-[11px] font-mono bg-clay-500 text-white font-bold">1.0x</button>
-              <button onclick="setPlaySpeed(1.25)" class="speed-btn px-2 py-0.5 rounded text-[11px] font-mono text-sand-400 hover:text-white">1.25x</button>
-              <button onclick="setPlaySpeed(1.5)" class="speed-btn px-2 py-0.5 rounded text-[11px] font-mono text-sand-400 hover:text-white">1.5x</button>
-              <button onclick="setPlaySpeed(2.0)" class="speed-btn px-2 py-0.5 rounded text-[11px] font-mono text-sand-400 hover:text-white">2.0x</button>
+          <div class="px-4 py-2.5 border-b flex items-center justify-between text-xs" style="border-color: var(--border-main);">
+            <span class="text-xs font-medium" style="color: var(--text-muted);">播放倍速:</span>
+            <div class="flex items-center gap-1.5">
+              <button onclick="setPlaySpeed(0.75)" class="speed-btn px-2.5 py-1 rounded-lg text-xs font-mono border hover:border-clay-500/50" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-secondary);">0.75x</button>
+              <button onclick="setPlaySpeed(1.0)" class="speed-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-clay-500 text-white font-bold">1.0x</button>
+              <button onclick="setPlaySpeed(1.25)" class="speed-btn px-2.5 py-1 rounded-lg text-xs font-mono border hover:border-clay-500/50" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-secondary);">1.25x</button>
+              <button onclick="setPlaySpeed(1.5)" class="speed-btn px-2.5 py-1 rounded-lg text-xs font-mono border hover:border-clay-500/50" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-secondary);">1.5x</button>
+              <button onclick="setPlaySpeed(2.0)" class="speed-btn px-2.5 py-1 rounded-lg text-xs font-mono border hover:border-clay-500/50" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-secondary);">2.0x</button>
             </div>
           </div>
 
           <!-- Playlist Items Scroll -->
-          <div class="flex-1 overflow-y-auto p-2 space-y-1" id="modalPlaylistItems">
-            <!-- Playlist items -->
-          </div>
-
-          <!-- Prev / Next Nav -->
-          <div class="p-3 border-t border-[#2C2B28] bg-[#141413] flex items-center justify-between gap-2">
-            <button onclick="playPrevVideo()" class="flex-1 py-1.5 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 text-sand-300 flex items-center justify-center gap-1.5 transition-all">
-              <i data-lucide="skip-back" class="w-3.5 h-3.5"></i> 上一集
-            </button>
-            <button onclick="playNextVideo()" class="flex-1 py-1.5 rounded-xl text-xs font-semibold bg-clay-500/20 hover:bg-clay-500/30 text-clay-400 flex items-center justify-center gap-1.5 transition-all">
-              下一集 <i data-lucide="skip-forward" class="w-3.5 h-3.5"></i>
-            </button>
+          <div class="flex-1 overflow-y-auto p-2.5 space-y-1.5" id="modalPlaylistItems">
+            <!-- Playlist items dynamically rendered -->
           </div>
 
         </div>
+
       </div>
 
     </div>
   </div>
 
   <!-- ======================================================== -->
-  <!-- MODAL: Reader Modal (For Articles & Books)               -->
+  <!-- MODAL: Reader Modal (Articles & Books)                   -->
   <!-- ======================================================== -->
-  <div id="readerModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-xl modal-backdrop">
-    <div class="relative w-full max-w-3xl bg-[#181816] border border-[#2C2B28] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] modal-content">
+  <div id="readerModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 backdrop-blur-xl modal-backdrop" style="background-color: var(--modal-overlay);">
+    <div class="relative w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] modal-content border" style="background-color: var(--bg-modal); border-color: var(--border-main);">
       
-      <div class="px-6 py-4 border-b border-[#2C2B28] flex items-center justify-between gap-4 bg-[#141413]">
-        <div class="flex items-center gap-3 min-w-0">
-          <span id="readerCategoryBadge" class="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-clay-500/20 text-clay-400 shrink-0">
-            深度文章
-          </span>
-          <h2 id="readerTitle" class="text-base sm:text-lg font-serif font-semibold text-[#FAF9F5] truncate">
+      <!-- Reader Header -->
+      <div class="px-6 py-4 border-b flex items-center justify-between" style="border-color: var(--border-main);">
+        <div class="flex items-center gap-3">
+          <span id="readerBadge" class="px-3 py-1 rounded-full text-xs font-mono font-bold border" style="background-color: var(--bg-badge); color: var(--text-badge); border-color: var(--border-badge);">ARTICLE</span>
+          <span id="readerReadTime" class="text-xs font-mono" style="color: var(--text-muted);">5 min read</span>
+        </div>
+        <button onclick="closeReaderModal()" class="p-2 rounded-xl border hover:border-clay-500/50 transition-all" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-secondary);">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Reader Scrollable Body -->
+      <div class="flex-1 overflow-y-auto p-6 sm:p-10 space-y-6">
+        <div>
+          <h1 id="readerTitle" class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold leading-snug mb-3" style="color: var(--text-main);">
             文章标题
-          </h2>
+          </h1>
+          <p id="readerSubtitle" class="text-base sm:text-lg leading-relaxed italic" style="color: var(--text-secondary);">
+            副标题或导读语
+          </p>
         </div>
-        <button onclick="closeReaderModal()" class="p-1.5 rounded-lg text-sand-400 hover:text-white transition-all">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
 
-      <div class="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6">
-        <div class="flex items-center gap-3 pb-4 border-b border-[#2C2B28]">
-          <div class="w-9 h-9 rounded-full bg-clay-500/20 flex items-center justify-center text-clay-400 font-bold font-serif text-sm">
-            E
-          </div>
+        <div class="flex items-center gap-3 py-3 border-y" style="border-color: var(--border-main);">
+          <div class="w-10 h-10 rounded-full bg-clay-500/20 text-clay-500 flex items-center justify-center font-bold">A</div>
           <div>
-            <div id="readerAuthorName" class="text-sm font-semibold text-sand-200">知识库作者</div>
-            <div id="readerAuthorDesc" class="text-xs text-sand-500">英语认知解析</div>
+            <div id="readerAuthorName" class="text-sm font-semibold" style="color: var(--text-main);">知识库作者</div>
+            <div id="readerAuthorDesc" class="text-xs" style="color: var(--text-muted);">英语认知解析</div>
           </div>
         </div>
 
-        <div id="readerSubtitle" class="text-base text-clay-400 font-serif italic border-l-2 border-clay-500 pl-3">
-          副标题
+        <!-- Markdown Content -->
+        <div id="readerBody" class="text-base sm:text-lg leading-loose space-y-5" style="color: var(--text-main);">
+          <!-- Content loaded here -->
         </div>
-
-        <div id="readerBody" class="prose prose-invert max-w-none text-sand-300 text-sm leading-relaxed space-y-4">
-          <!-- Injected by JS -->
-        </div>
-      </div>
-
-      <div class="px-6 py-3 border-t border-[#2C2B28] bg-[#141413] flex items-center justify-between text-xs text-sand-500">
-        <span>💡 沉浸式阅读 · 支持放入 articles/ 目录随时扩充</span>
-        <button onclick="closeReaderModal()" class="px-4 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-sand-200 font-semibold transition-all">
-          关闭阅读
-        </button>
       </div>
 
     </div>
   </div>
 
   <!-- ======================================================== -->
-  <!-- MODAL: Add Custom Fragment Modal                         -->
+  <!-- MODAL: Add Custom Content Modal                          -->
   <!-- ======================================================== -->
-  <div id="addModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl modal-backdrop">
-    <div class="relative w-full max-w-lg bg-[#181816] border border-[#2C2B28] rounded-2xl shadow-2xl overflow-hidden p-6 modal-content space-y-5">
+  <div id="addModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 backdrop-blur-xl modal-backdrop" style="background-color: var(--modal-overlay);">
+    <div class="relative w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden p-6 modal-content space-y-5 border" style="background-color: var(--bg-modal); border-color: var(--border-main);">
       
-      <div class="flex items-center justify-between border-b border-[#2C2B28] pb-3">
-        <h3 class="text-base font-serif font-semibold text-white flex items-center gap-2">
-          <i data-lucide="plus-circle" class="w-4 h-4 text-clay-400"></i> 新增个人知识切片
-        </h3>
-        <button onclick="closeAddModal()" class="text-sand-400 hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
+      <div class="flex items-center justify-between pb-3 border-b" style="border-color: var(--border-main);">
+        <h3 class="font-serif text-xl font-bold" style="color: var(--text-main);">补充英语知识切片</h3>
+        <button onclick="closeAddModal()" class="p-1.5 rounded-lg border hover:border-clay-500/50" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-secondary);">
+          <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
 
-      <div class="p-3.5 rounded-xl bg-clay-500/10 border border-clay-500/20 text-xs text-clay-300 space-y-1.5">
-        <div class="font-semibold flex items-center gap-1.5 text-clay-400">
-          <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i> 自由扩充指南：
+      <div class="space-y-4 text-sm">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: var(--text-muted);">知识类别</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button type="button" onclick="setAddType('video')" id="addTypeVideo" class="py-2.5 rounded-xl border text-center font-semibold text-xs border-clay-500 bg-clay-500/10 text-clay-500">
+              短视频
+            </button>
+            <button type="button" onclick="setAddType('article')" id="addTypeArticle" class="py-2.5 rounded-xl border text-center font-medium text-xs border-transparent hover:border-clay-500/30" style="background-color: var(--bg-card-secondary); color: var(--text-secondary);">
+              深度文章
+            </button>
+            <button type="button" onclick="setAddType('book')" id="addTypeBook" class="py-2.5 rounded-xl border text-center font-medium text-xs border-transparent hover:border-clay-500/30" style="background-color: var(--bg-card-secondary); color: var(--text-secondary);">
+              原版书籍
+            </button>
+          </div>
         </div>
-        <p class="text-sand-400 text-[11px] leading-relaxed">
-          • <strong>短视频</strong>：新建博主文件夹（如 <code class="text-clay-300 font-mono">赖世雄英语/</code>）放入 mp4，双击 <code class="text-clay-300 font-mono">sync_library.bat</code> 即刻全自动索引并提取封面！<br>
-          • <strong>文章与书籍</strong>：直接把 Markdown (.md) 放入 <code class="text-clay-300 font-mono">articles/</code> 或 <code class="text-clay-300 font-mono">books/</code>，或在下方在线录入保存。
-        </p>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: var(--text-muted);">核心词根 / 词眼 (Keyword)</label>
+          <input id="newKeyword" type="text" placeholder="例如：port、over、虚拟语气" class="w-full border rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-clay-500/40" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: var(--text-muted);">标题</label>
+          <input id="newTitle" type="text" placeholder="例如：词根 port 串记一组核心词" class="w-full border rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-clay-500/40" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: var(--text-muted);">核心心智 / 导读摘要</label>
+          <textarea id="newSubtitle" rows="3" placeholder="简要说明其底层逻辑或记忆技巧..." class="w-full border rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-clay-500/40" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: var(--text-muted);">作者 / 来源</label>
+          <input id="newAuthor" type="text" placeholder="例如：Ryan的英语笔记 / 英语兔 / 个人自学总结" class="w-full border rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-clay-500/40" style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);">
+        </div>
       </div>
 
-      <form id="addForm" onsubmit="handleSaveCustomItem(event)" class="space-y-4 text-xs">
-        <div>
-          <label class="block text-sand-400 font-semibold mb-1">碎片类型</label>
-          <select id="newType" class="w-full bg-[#141413] border border-[#2C2B28] rounded-xl px-3 py-2 text-sand-200 focus:outline-none focus:ring-1 focus:ring-clay-500">
-            <option value="article">📝 深度文章 / 语法笔记 (预留区)</option>
-            <option value="book">📚 精选书籍 / 导读书单 (预留区)</option>
-            <option value="video">🎬 短视频 / 外部教学切片</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="block text-sand-400 font-semibold mb-1">核心关键词 / 考点 *</label>
-          <input id="newKeyword" required type="text" placeholder="例如：over, rupt, 完成时, 冠词 the" class="w-full bg-[#141413] border border-[#2C2B28] rounded-xl px-3 py-2 text-sand-200 focus:outline-none focus:ring-1 focus:ring-clay-500 font-mono">
-        </div>
-
-        <div>
-          <label class="block text-sand-400 font-semibold mb-1">精炼主标题 *</label>
-          <input id="newTitle" required type="text" placeholder="例如：从母语者视角看完成时" class="w-full bg-[#141413] border border-[#2C2B28] rounded-xl px-3 py-2 text-sand-200 focus:outline-none focus:ring-1 focus:ring-clay-500">
-        </div>
-
-        <div>
-          <label class="block text-sand-400 font-semibold mb-1">核心认知点 / 副标题</label>
-          <input id="newSubtitle" type="text" placeholder="为什么 I have lost my key 代表现在进不去家门..." class="w-full bg-[#141413] border border-[#2C2B28] rounded-xl px-3 py-2 text-sand-200 focus:outline-none focus:ring-1 focus:ring-clay-500">
-        </div>
-
-        <div>
-          <label class="block text-sand-400 font-semibold mb-1">作者 / 来源</label>
-          <input id="newAuthor" type="text" placeholder="例如：赖世雄 / 旋元佑 / 个人自学总结" class="w-full bg-[#141413] border border-[#2C2B28] rounded-xl px-3 py-2 text-sand-200 focus:outline-none focus:ring-1 focus:ring-clay-500">
-        </div>
-
-        <div>
-          <label class="block text-sand-400 font-semibold mb-1">正文内容 (支持 Markdown)</label>
-          <textarea id="newContent" rows="4" placeholder="在此粘贴你的文章正文、核心例句或书籍导读要点..." class="w-full bg-[#141413] border border-[#2C2B28] rounded-xl px-3 py-2 text-sand-200 focus:outline-none focus:ring-1 focus:ring-clay-500 font-mono text-[11px]"></textarea>
-        </div>
-
-        <div class="pt-2 flex justify-end gap-2">
-          <button type="button" onclick="closeAddModal()" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-sand-300 font-semibold">取消</button>
-          <button type="submit" class="px-5 py-2 rounded-xl bg-clay-500 hover:bg-clay-600 text-white font-semibold shadow-md shadow-clay-500/20">保存到知识库</button>
-        </div>
-      </form>
+      <div class="pt-3 border-t flex items-center justify-end gap-3" style="border-color: var(--border-main);">
+        <button onclick="closeAddModal()" class="px-4 py-2 rounded-xl text-xs font-medium border" style="border-color: var(--border-main); color: var(--text-secondary);">取消</button>
+        <button onclick="submitNewContent()" class="px-5 py-2 rounded-xl text-xs font-semibold bg-clay-500 hover:bg-clay-600 text-white shadow-sm">保存并加入库</button>
+      </div>
 
     </div>
   </div>
 
-  <!-- Application Logic -->
+  <!-- ======================================================== -->
+  <!-- JAVASCRIPT LOGIC                                         -->
+  <!-- ======================================================== -->
   <script>
+    // Application State
     let allItems = [];
     let currentCategory = 'all';
     let currentAuthor = 'all';
@@ -575,25 +588,75 @@
     let currentSort = 'default';
     let showFavoritesOnly = false;
     let favorites = new Set();
-    let currentPlayingItem = null;
+    let currentModalItem = null;
     let playlistItems = [];
+    let addSelectedType = 'video';
 
-    window.addEventListener('DOMContentLoaded', () => {
+    // Initialize Application
+    document.addEventListener('DOMContentLoaded', () => {
+      initTheme();
       loadFavorites();
-      loadCustomItems();
-      renderStats();
-      renderAuthorPills();
-      renderTagsCloud();
-      filterAndRender();
+      loadDatabase();
       setupKeyboardShortcuts();
       lucide.createIcons();
     });
 
+    // Theme Management (Supports Persisted Light & Dark Modes)
+    function initTheme() {
+      const savedTheme = localStorage.getItem('lexi_theme');
+      const html = document.documentElement;
+      const icon = document.getElementById('themeIcon');
+      
+      if (savedTheme === 'light') {
+        html.classList.remove('dark');
+        if (icon) icon.setAttribute('data-lucide', 'moon');
+      } else {
+        html.classList.add('dark');
+        if (icon) icon.setAttribute('data-lucide', 'sun');
+      }
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('themeIcon');
+      
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('lexi_theme', 'light');
+        if (icon) icon.setAttribute('data-lucide', 'moon');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('lexi_theme', 'dark');
+        if (icon) icon.setAttribute('data-lucide', 'sun');
+      }
+      lucide.createIcons();
+    }
+
+    // Load Structured Data
+    function loadDatabase() {
+      if (window.LEXI_DATA && Array.isArray(window.LEXI_DATA.items)) {
+        allItems = window.LEXI_DATA.items;
+      } else {
+        console.warn('LEXI_DATA not found, falling back to empty state');
+        allItems = [];
+      }
+
+      updateCounters();
+      renderAuthorPills();
+      renderTagPills();
+      filterAndRender();
+    }
+
+    // Load Favorites from LocalStorage
     function loadFavorites() {
       try {
         const stored = localStorage.getItem('lexi_favorites');
-        if (stored) favorites = new Set(JSON.parse(stored));
-      } catch (e) {}
+        if (stored) {
+          favorites = new Set(json_safe_parse(stored, []));
+        }
+      } catch (e) {
+        favorites = new Set();
+      }
       updateFavBadge();
     }
 
@@ -609,24 +672,28 @@
       if (badge) badge.innerText = favorites.size;
     }
 
-    function toggleFavorite(id, e) {
-      if (e) e.stopPropagation();
-      if (favorites.has(id)) favorites.delete(id);
-      else favorites.add(id);
-      saveFavorites();
-      filterAndRender();
+    function json_safe_parse(str, fallback) {
+      try { return JSON.parse(str); } catch (e) { return fallback; }
     }
 
-    function loadCustomItems() {
-      const baseItems = (window.LEXI_DATA && window.LEXI_DATA.items) ? window.LEXI_DATA.items : [];
-      let custom = [];
-      try {
-        const stored = localStorage.getItem('lexi_custom_items');
-        if (stored) custom = JSON.parse(stored);
-      } catch (e) {}
-      allItems = [...baseItems, ...custom];
+    // Update Numerical Counters in Hero and Navigation
+    function updateCounters() {
+      const vids = allItems.filter(i => i.type === 'video').length;
+      const arts = allItems.filter(i => i.type === 'article').length;
+      const bks = allItems.filter(i => i.type === 'book').length;
+      const total = allItems.length;
+
+      const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
+      setEl('statVideos', vids);
+      setEl('statArticles', arts);
+      setEl('statBooks', bks);
+      setEl('catTotal', total);
+      setEl('catVideos', vids);
+      setEl('catArticles', arts);
+      setEl('catBooks', bks);
     }
 
+    // Render Dynamic Author Pills
     function renderAuthorPills() {
       const container = document.getElementById('authorPillsContainer');
       if (!container) return;
@@ -639,17 +706,16 @@
       const authorNames = Object.keys(authorsMap).sort();
 
       let html = `
-        <span class="text-xs text-sand-500 mr-1 hidden sm:inline shrink-0 font-medium">博主:</span>
-        <button onclick="setAuthor('all')" data-author="all" class="author-pill px-3 py-1.5 rounded-lg text-xs font-medium ${currentAuthor === 'all' ? 'bg-[#2C2B28] text-white font-semibold' : 'bg-transparent text-sand-400 hover:text-white'} shrink-0">
-          全部
+        <button onclick="setAuthor('all')" data-author="all" class="author-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all ${currentAuthor === 'all' ? 'pill-active' : 'border'}" style="${currentAuthor === 'all' ? '' : 'border-color: var(--border-main); color: var(--text-secondary);'}">
+          全部博主
         </button>
       `;
 
       authorNames.forEach(a => {
         const isAct = currentAuthor === a;
         html += `
-          <button onclick="setAuthor('${a}')" data-author="${a}" class="author-pill px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 ${isAct ? 'bg-[#2C2B28] text-white font-semibold' : 'bg-transparent text-sand-400 hover:text-white'}">
-            ${a} <span class="font-mono text-[10px] text-clay-400">(${authorsMap[a]})</span>
+          <button onclick="setAuthor('${a}')" data-author="${a}" class="author-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 ${isAct ? 'pill-active' : 'border'}" style="${isAct ? '' : 'border-color: var(--border-main); color: var(--text-secondary);'}">
+            ${a} <span class="font-mono text-[11px] text-clay-500">(${authorsMap[a]})</span>
           </button>
         `;
       });
@@ -657,57 +723,40 @@
       container.innerHTML = html;
     }
 
-    function renderStats() {
-      const vids = allItems.filter(i => i.type === 'video');
-      const arts = allItems.filter(i => i.type === 'article');
-      const bks = allItems.filter(i => i.type === 'book');
-
-      const elV = document.getElementById('statVideos');
-      const elA = document.getElementById('statArticles');
-      const elB = document.getElementById('statBooks');
-      const elAll = document.getElementById('countAll');
-      const elCV = document.getElementById('countVideos');
-      const elCA = document.getElementById('countArticles');
-      const elCB = document.getElementById('countBooks');
-
-      if (elV) elV.innerText = `${vids.length} 个高清切片`;
-      if (elA) elA.innerText = arts.length > 0 ? `${arts.length} 篇精读` : '预留就绪 (放入 articles 目录)';
-      if (elB) elB.innerText = bks.length > 0 ? `${bks.length} 本导读` : '预留就绪 (放入 books 目录)';
-
-      if (elAll) elAll.innerText = allItems.length;
-      if (elCV) elCV.innerText = vids.length;
-      if (elCA) elCA.innerText = arts.length > 0 ? arts.length : '预留';
-      if (elCB) elCB.innerText = bks.length > 0 ? bks.length : '预留';
-    }
-
-    function renderTagsCloud() {
-      const tagCounts = {};
-      const knownAuthors = new Set(allItems.filter(i => i.type === 'video').map(i => i.author));
-
-      allItems.forEach(item => {
-        (item.tags || []).forEach(t => {
-          if (!knownAuthors.has(t)) {
-            tagCounts[t] = (tagCounts[t] || 0) + 1;
-          }
-        });
-      });
-
-      const sortedTags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]);
-      const container = document.getElementById('tagPillsContainer');
+    // Render Tag / Keyword Pills
+    function renderTagPills() {
+      const container = document.getElementById('tagsContainer');
       if (!container) return;
 
+      const tagCount = {};
+      allItems.forEach(item => {
+        (item.tags || []).forEach(t => {
+          tagCount[t] = (tagCount[t] || 0) + 1;
+        });
+        if (item.keyword && item.keyword.length > 1) {
+          tagCount[item.keyword] = (tagCount[item.keyword] || 0) + 1;
+        }
+      });
+
+      // Filter and pick high-yield roots & tags
+      const topTags = Object.entries(tagCount)
+        .filter(([t, count]) => count >= 1 && t !== '短视频' && t !== '英语' && t !== '新添加视频')
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 18)
+        .map(e => e[0]);
+
       let html = `
-        <button onclick="setTag('all')" data-tag="all" class="tag-pill px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${currentTag === 'all' ? 'bg-clay-500/20 text-clay-400 border border-clay-500/30' : 'bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-white text-sand-400 hover:text-white border border-[#2C2B28]'}">
-          全部维度
+        <span class="text-xs font-semibold uppercase tracking-wider mr-1" style="color: var(--text-muted);">核心聚光:</span>
+        <button onclick="setTag('all')" data-tag="all" class="tag-pill px-3 py-1 rounded-lg text-xs font-medium transition-all ${currentTag === 'all' ? 'pill-active' : 'border'}" style="${currentTag === 'all' ? '' : 'background-color: var(--tag-bg); color: var(--tag-text); border-color: var(--tag-border);'}">
+          全部标签
         </button>
       `;
 
-      sortedTags.forEach(t => {
-        const count = tagCounts[t];
+      topTags.forEach(t => {
         const isAct = currentTag === t;
         html += `
-          <button onclick="setTag('${t}')" data-tag="${t}" class="tag-pill px-2.5 py-1 rounded-lg text-xs font-medium transition-all shrink-0 ${isAct ? 'bg-clay-500/20 text-clay-400 border border-clay-500/30' : 'bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-white text-sand-400 hover:text-white border border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE]'}">
-            #${t} <span class="text-[10px] opacity-60 font-mono">(${count})</span>
+          <button onclick="setTag('${t}')" data-tag="${t}" class="tag-pill px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 ${isAct ? 'pill-active' : 'border'}" style="${isAct ? '' : 'background-color: var(--tag-bg); color: var(--tag-text); border-color: var(--tag-border);'}">
+            #${t}
           </button>
         `;
       });
@@ -715,76 +764,60 @@
       container.innerHTML = html;
     }
 
+    // Primary Filter and Card Rendering Pipeline
     function filterAndRender() {
       let filtered = allItems.filter(item => {
-        if (currentCategory !== 'all' && item.category !== currentCategory) return false;
+        if (currentCategory !== 'all') {
+          if (currentCategory === '短视频' && item.type !== 'video') return false;
+          if (currentCategory === '深度文章' && item.type !== 'article') return false;
+          if (currentCategory === '精选书籍' && item.type !== 'book') return false;
+        }
+
         if (currentAuthor !== 'all' && item.author !== currentAuthor) return false;
-        if (currentTag !== 'all' && !(item.tags || []).includes(currentTag)) return false;
-        if (showFavoritesOnly && !favorites.has(item.id)) return false;
-        if (currentSearch) {
-          const q = currentSearch.toLowerCase();
-          const matchKey = (item.keyword || '').toLowerCase().includes(q);
+
+        if (currentTag !== 'all') {
+          const hasTag = (item.tags || []).includes(currentTag);
+          const hasKw = item.keyword === currentTag;
+          if (!hasTag && !hasKw) return false;
+        }
+
+        if (currentSearch.trim() !== '') {
+          const q = currentSearch.toLowerCase().trim();
           const matchTitle = (item.title || '').toLowerCase().includes(q);
           const matchSub = (item.subtitle || '').toLowerCase().includes(q);
+          const matchKw = (item.keyword || '').toLowerCase().includes(q);
           const matchAuth = (item.author || '').toLowerCase().includes(q);
           const matchTag = (item.tags || []).some(t => t.toLowerCase().includes(q));
-          const matchContent = (item.content || item.summary || '').toLowerCase().includes(q);
-          if (!matchKey && !matchTitle && !matchSub && !matchAuth && !matchTag && !matchContent) return false;
+          if (!matchTitle && !matchSub && !matchKw && !matchAuth && !matchTag) return false;
         }
+
+        if (showFavoritesOnly && !favorites.has(item.id)) return false;
+
         return true;
       });
 
+      // Sorting
       if (currentSort === 'size') {
         filtered.sort((a, b) => (b.size_mb || 0) - (a.size_mb || 0));
-      } else if (currentSort === 'title') {
+      } else if (currentSort === 'alpha') {
         filtered.sort((a, b) => (a.keyword || a.title || '').localeCompare(b.keyword || b.title || '', 'zh-CN'));
       } else {
         filtered.sort((a, b) => (a.num || 999) - (b.num || 999));
       }
 
+      // Update counters
       const visibleCountEl = document.getElementById('visibleCount');
       if (visibleCountEl) visibleCountEl.innerText = filtered.length;
 
       const grid = document.getElementById('cardsGrid');
-      const empty = document.getElementById('emptyState');
+      const emptyState = document.getElementById('emptyState');
 
       if (filtered.length === 0) {
         grid.innerHTML = '';
-        empty.classList.remove('hidden');
-
-        if (currentCategory === '深度文章') {
-          document.getElementById('emptyTitle').innerText = '文章专区预留中（随时补充）';
-          document.getElementById('emptyDesc').innerHTML = `
-            找到心仪的语法长文或学习笔记？<br>
-            直接将 <code class="text-clay-400 font-mono">.md</code> 放入 <code class="text-clay-400 font-mono">articles/</code> 目录，双击 <code class="text-clay-400 font-mono">sync_library.bat</code> 即可全自动同步！
-          `;
-          document.getElementById('emptyActions').innerHTML = `
-            <button onclick="openAddModal('article')" class="px-4 py-2 rounded-xl text-xs font-semibold bg-clay-500 hover:bg-clay-600 text-white transition-all shadow-sm">
-              <i data-lucide="plus" class="w-3.5 h-3.5 inline mr-1"></i> 在线补充第一篇文章
-            </button>
-          `;
-        } else if (currentCategory === '精选书籍') {
-          document.getElementById('emptyTitle').innerText = '书籍专区预留中（随时补充）';
-          document.getElementById('emptyDesc').innerHTML = `
-            有经典英语教材、原版书单或导读笔记？<br>
-            放入 <code class="text-clay-400 font-mono">books/</code> 目录即可自动生成优雅书单卡片。
-          `;
-          document.getElementById('emptyActions').innerHTML = `
-            <button onclick="openAddModal('book')" class="px-4 py-2 rounded-xl text-xs font-semibold bg-clay-500 hover:bg-clay-600 text-white transition-all shadow-sm">
-              <i data-lucide="plus" class="w-3.5 h-3.5 inline mr-1"></i> 在线补充第一本书籍导读
-            </button>
-          `;
-        } else {
-          document.getElementById('emptyTitle').innerText = '未找到相关的知识切片';
-          document.getElementById('emptyDesc').innerText = '请尝试更换搜索词，或重置筛选条件';
-          document.getElementById('emptyActions').innerHTML = `
-            <button onclick="resetFilters()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/20 text-sand-200 transition-all">
-              重置所有筛选
-            </button>
-          `;
-        }
+        emptyState.classList.remove('hidden');
       } else {
-        empty.classList.add('hidden');
+        emptyState.classList.add('hidden');
+
         let cardsHtml = filtered.map(renderCard).join('');
 
         if (currentCategory === '深度文章') {
@@ -805,19 +838,19 @@
       const folder = isArt ? 'articles/' : 'books/';
 
       return `
-        <div onclick="openAddModal('${type}')" class="rounded-2xl border-2 border-dashed border-[#2C2B28] hover:border-clay-500/50 hover:bg-clay-500/[0.02] p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 min-h-[260px] group">
-          <div class="w-12 h-12 rounded-2xl bg-[#1E1E1C] border border-[#2C2B28] flex items-center justify-center text-clay-400 mb-3 group-hover:scale-105 transition-transform">
-            <i data-lucide="plus" class="w-6 h-6"></i>
+        <div onclick="openAddModal('${type}')" class="rounded-2xl border-2 border-dashed p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 min-h-[300px] group border-clay-500/40 hover:bg-clay-500/[0.04]">
+          <div class="w-14 h-14 rounded-2xl border flex items-center justify-center text-clay-500 mb-3 group-hover:scale-105 transition-transform" style="background-color: var(--bg-card); border-color: var(--border-main);">
+            <i data-lucide="plus" class="w-7 h-7 stroke-[2.2]"></i>
           </div>
-          <h4 class="text-sm font-serif font-semibold text-[#FAF9F5] mb-1">${label}</h4>
-          <p class="text-xs text-sand-400 max-w-[190px] leading-relaxed">
-            点击在此录入，或直接放入 <code class="text-clay-400 font-mono">${folder}</code> 目录
+          <h4 class="text-base font-serif font-bold mb-1" style="color: var(--text-main);">${label}</h4>
+          <p class="text-xs leading-relaxed max-w-[200px]" style="color: var(--text-secondary);">
+            点击在此录入，或直接在 <code class="text-clay-500 font-mono font-bold">${folder}</code> 放入 Markdown 笔记
           </p>
         </div>
       `;
     }
 
-    // Render Clean Card with Real Poster & Prominent Keyword
+    // Render Rich Card with Real Video Cover, Larger Typography, and Prominent Keyword
     function renderCard(item) {
       const isFav = favorites.has(item.id);
       const isVideo = item.type === 'video';
@@ -826,61 +859,60 @@
         ? `openVideoModal('${item.id}')` 
         : `openReaderModal('${item.id}')`;
 
-      // Real Poster Frame Container
       let coverVisual = '';
       if (isVideo) {
-        const posterSrc = item.poster || `thumbnails/test_0.jpg`;
+        const posterSrc = item.poster || `thumbnails/as_01.jpg`;
         coverVisual = `
-          <div class="relative w-full aspect-[16/10] bg-[#141413] overflow-hidden rounded-t-2xl">
+          <div class="relative w-full aspect-[16/10] bg-black overflow-hidden rounded-t-2xl">
             <!-- Real HD Video Poster -->
             <img 
               src="${posterSrc}" 
               loading="lazy"
               alt="${item.title}"
-              class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
-              onerror="this.src='https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=380&fit=crop'"
+              class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
+              onerror="this.src='thumbnails/as_01.jpg'"
             >
             
-            <!-- Dark Gradient Overlay for Readability -->
-            <div class="absolute inset-0 bg-gradient-to-t from-[#1E1E1C] via-transparent to-black/30"></div>
+            <!-- Dark Overlay for Contrast -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30"></div>
 
-            <!-- Top Left: Prominent Keyword Badge -->
-            <div class="absolute top-2.5 left-2.5 z-20 flex items-center gap-1.5">
-              <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-[#141413]/90 text-clay-400 border border-clay-500/30 backdrop-blur-md shadow-sm">
+            <!-- Top Left: Prominent Keyword Badge (Upgraded to text-sm font-bold) -->
+            <div class="absolute top-3 left-3 z-20 flex items-center gap-1.5">
+              <span class="px-3 py-1 rounded-lg text-sm font-mono font-bold bg-[#141413]/90 text-clay-400 border border-clay-500/40 backdrop-blur-md shadow-md">
                 ${item.keyword || 'CORE'}
               </span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-black/60 text-sand-300 backdrop-blur-sm">
+              <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-black/70 text-sand-200 backdrop-blur-sm">
                 EP #${String(item.num || 0).padStart(2, '0')}
               </span>
             </div>
 
             <!-- Bottom Right: Duration Badge -->
-            <div class="absolute bottom-2.5 right-2.5 z-20 px-2 py-0.5 rounded text-[10px] font-mono bg-black/75 text-sand-200 backdrop-blur-sm">
+            <div class="absolute bottom-2.5 right-3 z-20 px-2 py-0.5 rounded text-[11px] font-mono bg-black/80 text-sand-200 backdrop-blur-sm">
               ${item.duration_est || '2~3 min'}
             </div>
 
             <!-- Hover Play Button Overlay -->
-            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 backdrop-blur-[1px] transition-opacity flex items-center justify-center">
-              <div class="w-11 h-11 rounded-full bg-clay-500 text-white flex items-center justify-center shadow-lg shadow-clay-500/40 transform scale-90 group-hover:scale-100 transition-transform">
-                <i data-lucide="play" class="w-5 h-5 fill-current ml-0.5"></i>
+            <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 backdrop-blur-[1px] transition-opacity flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-clay-500 text-white flex items-center justify-center shadow-xl shadow-clay-500/50 transform scale-90 group-hover:scale-100 transition-transform">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
               </div>
             </div>
           </div>
         `;
       } else {
         coverVisual = `
-          <div class="relative w-full aspect-[16/10] bg-gradient-to-br from-[#1E1E1C] to-[#141413] flex flex-col justify-between p-5 rounded-t-2xl border-b border-[#2C2B28]">
+          <div class="relative w-full aspect-[16/10] flex flex-col justify-between p-6 rounded-t-2xl border-b" style="background-color: var(--bg-card-secondary); border-color: var(--border-main);">
             <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-clay-500/10 text-clay-400 border border-clay-500/20">
+              <span class="px-3 py-1 rounded-lg text-sm font-mono font-bold border" style="background-color: var(--bg-badge); color: var(--text-badge); border-color: var(--border-badge);">
                 ${item.keyword || 'ESSAY'}
               </span>
-              <span class="text-[11px] font-mono text-sand-400">
+              <span class="text-xs font-mono" style="color: var(--text-muted);">
                 ${item.read_time || '5 min'}
               </span>
             </div>
             <div>
-              <div class="text-[11px] text-clay-400 font-mono mb-1 uppercase tracking-wider">DEPTH READING</div>
-              <div class="font-serif text-lg font-medium text-white line-clamp-2">
+              <div class="text-[11px] font-mono mb-1 uppercase tracking-wider font-bold" style="color: var(--text-badge);">DEPTH READING</div>
+              <div class="font-serif text-xl font-bold line-clamp-2" style="color: var(--text-main);">
                 ${item.title}
               </div>
             </div>
@@ -888,29 +920,29 @@
         `;
       }
 
-      // Tags
+      // Tags (Larger and cleaner)
       const tagsHtml = (item.tags || []).slice(0, 2).map(t => `
-        <span class="text-[10px] text-sand-400 bg-white/[0.04] px-2 py-0.5 rounded border border-[#2C2B28]">
+        <span class="text-[11px] font-medium px-2 py-0.5 rounded border" style="background-color: var(--tag-bg); color: var(--tag-text); border-color: var(--tag-border);">
           #${t}
         </span>
       `).join('');
 
       return `
-        <div class="claude-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer" onclick="${clickAction}">
+        <div class="lexi-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer" onclick="${clickAction}">
           
           ${coverVisual}
 
-          <!-- Card Content Body -->
-          <div class="p-4 flex-1 flex flex-col justify-between space-y-3 bg-[#1E1E1C]">
+          <!-- Card Content Body (Bigger typography, Harmonious Palette) -->
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3.5">
             
-            <div class="space-y-1.5">
-              <!-- Sharp Clear Headline -->
-              <h3 class="font-sans font-semibold text-sm text-[#FAF9F5] group-hover:text-clay-400 transition-colors line-clamp-2 leading-snug">
+            <div class="space-y-2">
+              <!-- Sharp Clear Headline (Upgraded to text-[16px]~17px font-bold) -->
+              <h3 class="font-sans font-bold text-base sm:text-[17px] group-hover:text-clay-500 transition-colors line-clamp-2 leading-snug tracking-tight" style="color: var(--text-main);">
                 ${item.title}
               </h3>
-              <!-- Core Insight Subtitle -->
-              <p class="text-xs text-sand-400 line-clamp-2 leading-relaxed">
-                ${item.subtitle || '点击查看详情与在线播放...'}
+              <!-- Core Insight Subtitle (Upgraded to text-sm) -->
+              <p class="text-sm line-clamp-2 leading-relaxed" style="color: var(--text-secondary);">
+                ${item.subtitle || '点击查看详情并在沉浸剧场中播放学习...'}
               </p>
             </div>
 
@@ -920,22 +952,24 @@
             </div>
 
             <!-- Card Bottom Bar -->
-            <div class="pt-3 border-t border-[#2C2B28] flex items-center justify-between text-xs">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="text-sand-300 font-medium truncate text-[11px]">${item.author}</span>
+            <div class="pt-3.5 border-t flex items-center justify-between text-xs sm:text-sm" style="border-color: var(--border-main);">
+              <div class="flex items-center gap-2 min-w-0 font-medium truncate" style="color: var(--text-secondary);">
+                <i data-lucide="user" class="w-3.5 h-3.5 text-clay-500 shrink-0"></i>
+                <span class="truncate">${item.author}</span>
               </div>
 
-              <div class="flex items-center gap-1.5 shrink-0">
+              <div class="flex items-center gap-2 shrink-0">
                 <button 
                   onclick="toggleFavorite('${item.id}', event)" 
-                  class="p-1 rounded text-sand-400 hover:text-clay-400 transition-all ${isFav ? '!text-clay-400' : ''}"
+                  class="p-1 rounded transition-all hover:scale-110 ${isFav ? 'text-clay-500' : ''}"
+                  style="color: ${isFav ? '#D97757' : 'var(--text-muted)'};"
                   title="${isFav ? '取消收藏' : '收藏'}"
                 >
-                  <i data-lucide="bookmark" class="w-3.5 h-3.5 ${isFav ? 'fill-current' : ''}"></i>
+                  <i data-lucide="bookmark" class="w-4 h-4 ${isFav ? 'fill-current' : ''}"></i>
                 </button>
 
-                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-clay-400 group-hover:translate-x-0.5 transition-transform">
-                  ${isVideo ? '观看' : '阅读'} <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                <span class="inline-flex items-center gap-1 text-xs font-bold text-clay-500 group-hover:translate-x-0.5 transition-transform">
+                  ${isVideo ? '播放' : '研读'} <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                 </span>
               </div>
             </div>
@@ -951,67 +985,101 @@
       const item = allItems.find(i => i.id === itemId);
       if (!item) return;
 
-      currentPlayingItem = item;
-
+      currentModalItem = item;
       const modal = document.getElementById('videoModal');
       const vEl = document.getElementById('activeVideo');
       const titleEl = document.getElementById('modalVideoTitle');
-      const subEl = document.getElementById('modalVideoSubtitle');
       const keyEl = document.getElementById('modalKeywordBadge');
+      const subEl = document.getElementById('modalVideoSubtitle');
       const favBtn = document.getElementById('modalFavBtn');
 
       titleEl.innerText = item.title;
-      subEl.innerText = item.subtitle || '暂无详细介绍';
       keyEl.innerText = item.keyword || item.author;
+      subEl.innerText = item.subtitle || `${item.author} 知识切片讲解`;
 
+      // Update Fav state
       const isFav = favorites.has(item.id);
-      favBtn.className = `p-1.5 rounded-lg transition-all ${isFav ? 'text-clay-400 bg-clay-500/10' : 'text-sand-400 hover:text-clay-400'}`;
+      favBtn.innerHTML = `<i data-lucide="bookmark" class="w-5 h-5 ${isFav ? 'fill-current text-clay-500' : ''}"></i>`;
 
-      vEl.src = item.src;
-      vEl.playbackRate = 1.0;
-      vEl.play().catch(e => console.log('Autoplay:', e));
-
-      playlistItems = allItems.filter(i => i.type === 'video' && i.author === item.author);
-      document.getElementById('playlistCount').innerText = `${playlistItems.length} 集`;
-      
-      renderModalPlaylist();
-
+      // Populate tags
       const tagsContainer = document.getElementById('modalTagsContainer');
       tagsContainer.innerHTML = (item.tags || []).map(t => `
-        <span class="px-2 py-0.5 rounded text-[10px] bg-white/[0.04] text-sand-300 border border-[#2C2B28] font-mono">
+        <span class="text-xs px-2.5 py-0.5 rounded border" style="background-color: var(--tag-bg); color: var(--tag-text); border-color: var(--tag-border);">
           #${t}
         </span>
       `).join('');
+
+      // Build Playlist: Videos by the same author
+      playlistItems = allItems.filter(i => i.type === 'video' && i.author === item.author);
+      document.getElementById('playlistCount').innerText = `${playlistItems.length} 集`;
+      renderPlaylist(item.id);
+
+      // Play video (with range request support)
+      vEl.src = item.src;
+      vEl.load();
+      vEl.play().catch(() => {});
 
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
       lucide.createIcons();
     }
 
-    function renderModalPlaylist() {
-      const container = document.getElementById('modalPlaylistItems');
-      if (!container) return;
+    function renderPlaylist(activeId) {
+      const pContainer = document.getElementById('modalPlaylistItems');
+      if (!pContainer) return;
 
-      container.innerHTML = playlistItems.map(it => {
-        const isCurrent = currentPlayingItem && currentPlayingItem.id === it.id;
+      pContainer.innerHTML = playlistItems.map((p, idx) => {
+        const isCurrent = p.id === activeId;
         return `
           <div 
-            onclick="openVideoModal('${it.id}')"
-            class="p-2.5 rounded-xl text-xs flex items-center gap-2.5 cursor-pointer transition-all ${isCurrent ? 'bg-clay-500/20 border border-clay-500/30 text-white font-semibold' : 'hover:bg-white/[0.04] text-sand-300'}"
+            onclick="switchVideo('${p.id}')"
+            class="p-2.5 rounded-xl flex items-center gap-3 cursor-pointer transition-all border ${isCurrent ? 'border-clay-500/50 bg-clay-500/10' : 'border-transparent hover:bg-clay-500/[0.05]'}"
           >
-            <span class="w-6 text-center font-mono text-[10px] text-clay-400 shrink-0">
-              ${isCurrent ? '<i data-lucide="play" class="w-3 h-3 fill-current inline"></i>' : String(it.num || 0).padStart(2, '0')}
-            </span>
-            <div class="flex-1 truncate">
-              <span class="font-mono text-clay-400 mr-1">[${it.keyword || 'KEY'}]</span> ${it.title}
+            <div class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold shrink-0 ${isCurrent ? 'bg-clay-500 text-white' : 'border'}" style="${isCurrent ? '' : 'background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-muted);'}">
+              ${idx + 1}
             </div>
-            <span class="text-[10px] text-sand-500 font-mono shrink-0">
-              ${it.duration_est || ''}
-            </span>
+            <div class="flex-1 min-w-0">
+              <div class="text-xs font-semibold truncate ${isCurrent ? 'text-clay-500 font-bold' : ''}" style="${isCurrent ? '' : 'color: var(--text-main);'}">
+                ${p.title}
+              </div>
+              <div class="text-[11px] font-mono flex items-center gap-2 mt-0.5" style="color: var(--text-muted);">
+                <span class="text-clay-500 font-bold font-mono">[${p.keyword || 'KEY'}]</span>
+                <span>${p.duration_est || '2 min'}</span>
+              </div>
+            </div>
+            ${isCurrent ? '<i data-lucide="volume-2" class="w-4 h-4 text-clay-500 shrink-0"></i>' : ''}
           </div>
         `;
       }).join('');
       lucide.createIcons();
+    }
+
+    function switchVideo(itemId) {
+      openVideoModal(itemId);
+    }
+
+    function playNextVideo() {
+      if (!currentModalItem) return;
+      const curIdx = playlistItems.findIndex(i => i.id === currentModalItem.id);
+      if (curIdx !== -1 && curIdx + 1 < playlistItems.length) {
+        openVideoModal(playlistItems[curIdx + 1].id);
+      }
+    }
+
+    function setPlaySpeed(rate) {
+      const vEl = document.getElementById('activeVideo');
+      if (vEl) vEl.playbackRate = rate;
+
+      document.querySelectorAll('.speed-btn').forEach(btn => {
+        if (btn.innerText.includes(String(rate))) {
+          btn.className = 'speed-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-clay-500 text-white font-bold';
+        } else {
+          btn.className = 'speed-btn px-2.5 py-1 rounded-lg text-xs font-mono border hover:border-clay-500/50';
+          btn.style.backgroundColor = 'var(--bg-card)';
+          btn.style.borderColor = 'var(--border-main)';
+          btn.style.color = 'var(--text-secondary)';
+        }
+      });
     }
 
     function closeVideoModal() {
@@ -1023,41 +1091,18 @@
       }
       modal.classList.add('hidden');
       document.body.style.overflow = '';
-    }
-
-    function playNextVideo() {
-      if (!currentPlayingItem || playlistItems.length === 0) return;
-      const idx = playlistItems.findIndex(i => i.id === currentPlayingItem.id);
-      const nextIdx = (idx + 1) % playlistItems.length;
-      openVideoModal(playlistItems[nextIdx].id);
-    }
-
-    function playPrevVideo() {
-      if (!currentPlayingItem || playlistItems.length === 0) return;
-      const idx = playlistItems.findIndex(i => i.id === currentPlayingItem.id);
-      const prevIdx = (idx - 1 + playlistItems.length) % playlistItems.length;
-      openVideoModal(playlistItems[prevIdx].id);
-    }
-
-    function setPlaySpeed(speed) {
-      const vEl = document.getElementById('activeVideo');
-      if (vEl) vEl.playbackRate = speed;
-      document.querySelectorAll('.speed-btn').forEach(btn => {
-        if (btn.innerText.includes(speed + 'x')) {
-          btn.className = 'speed-btn px-2 py-0.5 rounded text-[11px] font-mono bg-clay-500 text-white font-bold';
-        } else {
-          btn.className = 'speed-btn px-2 py-0.5 rounded text-[11px] font-mono text-sand-400 hover:text-white';
-        }
-      });
+      currentModalItem = null;
     }
 
     function toggleModalFav() {
-      if (!currentPlayingItem) return;
-      toggleFavorite(currentPlayingItem.id);
-      const isFav = favorites.has(currentPlayingItem.id);
+      if (!currentModalItem) return;
+      toggleFavorite(currentModalItem.id);
+      const isFav = favorites.has(currentModalItem.id);
       const favBtn = document.getElementById('modalFavBtn');
-      favBtn.className = `p-1.5 rounded-lg transition-all ${isFav ? 'text-clay-400 bg-clay-500/10' : 'text-sand-400 hover:text-clay-400'}`;
-      lucide.createIcons();
+      if (favBtn) {
+        favBtn.innerHTML = `<i data-lucide="bookmark" class="w-5 h-5 ${isFav ? 'fill-current text-clay-500' : ''}"></i>`;
+        lucide.createIcons();
+      }
     }
 
     // Modal Control: Reader Modal
@@ -1065,28 +1110,20 @@
       const item = allItems.find(i => i.id === itemId);
       if (!item) return;
 
-      const modal = document.getElementById('readerModal');
-      document.getElementById('readerCategoryBadge').innerText = item.category;
       document.getElementById('readerTitle').innerText = item.title;
       document.getElementById('readerSubtitle').innerText = item.subtitle || '';
+      document.getElementById('readerBadge').innerText = item.keyword || item.category;
+      document.getElementById('readerReadTime').innerText = item.read_time || '5 min read';
       document.getElementById('readerAuthorName').innerText = item.author;
-      document.getElementById('readerAuthorDesc').innerText = item.author_desc || '知识库自学导读';
+      document.getElementById('readerAuthorDesc').innerText = item.author_desc || '知识库深度研读';
 
-      const rawText = item.content || item.summary || '暂无详细内容';
-      let formatted = rawText
-        .replace(/### (.*?)\n/g, '<h3 class="text-base font-serif font-bold text-white mt-4 mb-2 pb-1 border-b border-[#2C2B28]">$1</h3>')
-        .replace(/#### (.*?)\n/g, '<h4 class="text-sm font-semibold text-clay-400 mt-3 mb-1">$1</h4>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em class="text-sand-200 italic">$1</em>')
-        .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-white/10 text-clay-300 font-mono text-xs">$1</code>')
-        .replace(/> (.*?)\n/g, '<blockquote class="border-l-4 border-clay-500 pl-3 my-2 text-clay-200 bg-clay-500/5 py-1.5 rounded-r">$1</blockquote>')
-        .replace(/\n\n/g, '</p><p class="my-2">')
-        .replace(/---/g, '<hr class="border-[#2C2B28] my-4">');
+      const bodyEl = document.getElementById('readerBody');
+      const rawContent = item.content || '暂无详细 Markdown 文本内容，可随时在文章或书籍目录中补充。';
+      bodyEl.innerHTML = rawContent.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
 
-      document.getElementById('readerBody').innerHTML = `<p>${formatted}</p>`;
-
-      modal.classList.remove('hidden');
+      document.getElementById('readerModal').classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+      lucide.createIcons();
     }
 
     function closeReaderModal() {
@@ -1094,12 +1131,12 @@
       document.body.style.overflow = '';
     }
 
-    // Modal Control: Add Custom Fragment
-    function openAddModal(preselectedType = 'article') {
-      const typeSelect = document.getElementById('newType');
-      if (typeSelect) typeSelect.value = preselectedType;
+    // Modal Control: Add Custom Content
+    function openAddModal(type) {
+      if (type) setAddType(type);
       document.getElementById('addModal').classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+      lucide.createIcons();
     }
 
     function closeAddModal() {
@@ -1107,56 +1144,75 @@
       document.body.style.overflow = '';
     }
 
-    function handleSaveCustomItem(e) {
-      e.preventDefault();
-      const type = document.getElementById('newType').value;
-      const keyword = document.getElementById('newKeyword').value.trim();
+    function setAddType(type) {
+      addSelectedType = type;
+      const vBtn = document.getElementById('addTypeVideo');
+      const aBtn = document.getElementById('addTypeArticle');
+      const bBtn = document.getElementById('addTypeBook');
+
+      [vBtn, aBtn, bBtn].forEach(b => {
+        b.className = 'py-2.5 rounded-xl border text-center font-medium text-xs border-transparent hover:border-clay-500/30';
+        b.style.backgroundColor = 'var(--bg-card-secondary)';
+        b.style.color = 'var(--text-secondary)';
+      });
+
+      const activeBtn = type === 'video' ? vBtn : (type === 'article' ? aBtn : bBtn);
+      activeBtn.className = 'py-2.5 rounded-xl border text-center font-semibold text-xs border-clay-500 bg-clay-500/10 text-clay-500';
+    }
+
+    function submitNewContent() {
+      const keyword = document.getElementById('newKeyword').value.trim() || 'CORE';
       const title = document.getElementById('newTitle').value.trim();
       const subtitle = document.getElementById('newSubtitle').value.trim();
-      const author = document.getElementById('newAuthor').value.trim() || '自学笔记';
-      const content = document.getElementById('newContent').value.trim();
+      const author = document.getElementById('newAuthor').value.trim() || '自学沉淀';
 
-      const categoryMap = { 'video': '短视频', 'article': '深度文章', 'book': '精选书籍' };
+      if (!title) {
+        alert('请至少填写标题！');
+        return;
+      }
 
+      const type = addSelectedType;
       const newItem = {
-        id: 'custom_' + Date.now(),
-        keyword: keyword || 'NOTE',
+        id: `custom_${Date.now()}`,
+        keyword,
         title,
         subtitle,
         author,
         author_desc: '个人沉淀切片',
+        author_avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=120&h=120&fit=crop',
         type,
-        category: categoryMap[type] || '深度文章',
-        tags: [author, type === 'video' ? '视频' : '笔记'],
-        content: content || subtitle,
-        read_time: '自定阅读',
-        size_mb: 0
+        category: type === 'video' ? '短视频' : (type === 'article' ? '深度文章' : '精选书籍'),
+        tags: [author, type === 'video' ? '视频' : '笔记', keyword],
+        poster: 'thumbnails/as_01.jpg',
+        src: '',
+        size_mb: 5.0,
+        duration_est: '3 min',
+        read_time: '5 min'
       };
 
-      try {
-        const stored = localStorage.getItem('lexi_custom_items');
-        const customArr = stored ? JSON.parse(stored) : [];
-        customArr.unshift(newItem);
-        localStorage.setItem('lexi_custom_items', JSON.stringify(customArr));
-      } catch (err) {}
-
-      loadCustomItems();
-      renderStats();
+      allItems.unshift(newItem);
+      closeAddModal();
+      updateCounters();
       renderAuthorPills();
-      renderTagsCloud();
+      renderTagPills();
       filterAndRender();
 
-      document.getElementById('addForm').reset();
-      closeAddModal();
+      // Reset form
+      document.getElementById('newTitle').value = '';
+      document.getElementById('newSubtitle').value = '';
+      document.getElementById('newKeyword').value = '';
     }
 
+    // Filter Switchers
     function setCategory(cat) {
       currentCategory = cat;
       document.querySelectorAll('.cat-pill').forEach(btn => {
         if (btn.dataset.cat === cat) {
-          btn.className = 'cat-pill px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-clay-500 text-white shadow-sm shadow-clay-500/20';
+          btn.className = 'cat-pill pill-active px-4 py-2 rounded-xl text-sm font-semibold transition-all';
         } else {
-          btn.className = 'cat-pill px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-[#1E1E1C] dark:bg-[#1E1E1C] light:bg-white text-sand-400 dark:text-sand-400 light:text-sand-600 border border-[#2C2B28] dark:border-[#2C2B28] light:border-[#E8E5DE] hover:border-clay-500/40';
+          btn.className = 'cat-pill px-4 py-2 rounded-xl text-sm font-semibold transition-all border';
+          btn.style.borderColor = 'var(--border-main)';
+          btn.style.color = 'var(--text-secondary)';
         }
       });
       filterAndRender();
@@ -1166,9 +1222,11 @@
       currentAuthor = author;
       document.querySelectorAll('.author-pill').forEach(btn => {
         if (btn.dataset.author === author) {
-          btn.className = 'author-pill px-3 py-1.5 rounded-lg text-xs font-medium bg-[#2C2B28] text-white font-semibold shrink-0';
+          btn.className = 'author-pill pill-active px-3.5 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all';
         } else {
-          btn.className = 'author-pill px-3 py-1.5 rounded-lg text-xs font-medium bg-transparent text-sand-400 hover:text-white shrink-0';
+          btn.className = 'author-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 border';
+          btn.style.borderColor = 'var(--border-main)';
+          btn.style.color = 'var(--text-secondary)';
         }
       });
       filterAndRender();
@@ -1176,41 +1234,64 @@
 
     function setTag(tag) {
       currentTag = tag;
-      renderTagsCloud();
+      document.querySelectorAll('.tag-pill').forEach(btn => {
+        if (btn.dataset.tag === tag) {
+          btn.className = 'tag-pill pill-active px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0';
+        } else {
+          btn.className = 'tag-pill px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 border';
+          btn.style.backgroundColor = 'var(--tag-bg)';
+          btn.style.borderColor = 'var(--tag-border)';
+          btn.style.color = 'var(--tag-text)';
+        }
+      });
       filterAndRender();
     }
 
     function handleSearch(val) {
-      currentSearch = val.trim();
-      const clearBtn = document.getElementById('clearSearchBtn');
+      currentSearch = val;
+      const clearBtn = document.getElementById('searchClearBtn');
       if (clearBtn) {
-        if (currentSearch) clearBtn.classList.remove('hidden');
+        if (val.trim()) clearBtn.classList.remove('hidden');
         else clearBtn.classList.add('hidden');
       }
       filterAndRender();
     }
 
     function clearSearch() {
-      const input = document.getElementById('searchInput');
-      if (input) input.value = '';
+      const sInput = document.getElementById('searchInput');
+      if (sInput) sInput.value = '';
       currentSearch = '';
-      document.getElementById('clearSearchBtn').classList.add('hidden');
+      const clearBtn = document.getElementById('searchClearBtn');
+      if (clearBtn) clearBtn.classList.add('hidden');
       filterAndRender();
     }
 
-    function handleSort(sortVal) {
-      currentSort = sortVal;
+    function handleSort(val) {
+      currentSort = val;
       filterAndRender();
     }
 
     function toggleFavoriteFilter() {
       showFavoritesOnly = !showFavoritesOnly;
       const btn = document.getElementById('favToggleBtn');
-      if (showFavoritesOnly) {
-        btn.classList.add('bg-clay-500/20', 'border-clay-500/50', '!text-clay-400');
-      } else {
-        btn.classList.remove('bg-clay-500/20', 'border-clay-500/50', '!text-clay-400');
+      if (btn) {
+        if (showFavoritesOnly) {
+          btn.classList.add('border-clay-500', 'bg-clay-500/15', '!text-clay-500');
+        } else {
+          btn.classList.remove('border-clay-500', 'bg-clay-500/15', '!text-clay-500');
+        }
       }
+      filterAndRender();
+    }
+
+    function toggleFavorite(id, e) {
+      if (e) e.stopPropagation();
+      if (favorites.has(id)) {
+        favorites.delete(id);
+      } else {
+        favorites.add(id);
+      }
+      saveFavorites();
       filterAndRender();
     }
 
@@ -1223,32 +1304,12 @@
       const sInput = document.getElementById('searchInput');
       if (sInput) sInput.value = '';
       const favBtn = document.getElementById('favToggleBtn');
-      if (favBtn) favBtn.classList.remove('bg-clay-500/20', 'border-clay-500/50', '!text-clay-400');
+      if (favBtn) favBtn.classList.remove('border-clay-500', 'bg-clay-500/15', '!text-clay-500');
       
       setCategory('all');
       setAuthor('all');
       setTag('all');
       clearSearch();
-    }
-
-    function toggleTheme() {
-      const html = document.documentElement;
-      const body = document.body;
-      const icon = document.getElementById('themeIcon');
-      if (html.classList.contains('dark')) {
-        html.classList.remove('dark');
-        html.classList.add('light');
-        body.classList.remove('dark');
-        body.classList.add('light');
-        icon.setAttribute('data-lucide', 'sun');
-      } else {
-        html.classList.remove('light');
-        html.classList.add('dark');
-        body.classList.remove('light');
-        body.classList.add('dark');
-        icon.setAttribute('data-lucide', 'moon');
-      }
-      lucide.createIcons();
     }
 
     function setupKeyboardShortcuts() {
