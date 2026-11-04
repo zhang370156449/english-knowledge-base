@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 THUMB_DIR = os.path.join(BASE_DIR, 'thumbnails')
 os.makedirs(THUMB_DIR, exist_ok=True)
 
-IGNORE_FOLDERS = {'logs', 'articles', 'books', '.gemini', '.git', 'scratch', '_staging', '__pycache__', 'thumbnails'}
+IGNORE_FOLDERS = {'logs', 'articles', 'books', '.gemini', '.git', 'scratch', '_staging', '__pycache__', 'thumbnails', '瑞杰老师 30 天英语实战训练营(1)'}
 VIDEO_EXTS = {'.mp4', '.mkv', '.mov', '.webm', '.avi'}
 
 AUTHOR_CONFIGS = {
@@ -75,6 +75,12 @@ AUTHOR_CONFIGS = {
         'avatar': 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=faces',
         'prefix': 'qm',
         'default_tag': '万能动词'
+    },
+    '英语文化与习俗': {
+        'desc': '英美文化渊源 · 社交礼仪 · Small Talk与潜规则',
+        'avatar': 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces',
+        'prefix': 'cl',
+        'default_tag': '英语文化'
     }
 }
 
@@ -130,10 +136,69 @@ KEYWORD_MAP = {
     "strengths": "发音技巧",
     "late": "late/latter",
     "expect": "expect/except",
-    "con-": "con-"
+    "con-": "con-",
+    # 英语文化、英美习俗与礼仪潜规则
+    "前世今生": "文化渊源",
+    "soccer": "词源文化",
+    "second": "词源文化",
+    "normal university": "词源文化",
+    "思维差异": "思维差异",
+    "语言思维": "思维差异",
+    "否定疑问句": "思维逻辑",
+    "small talk": "Small Talk",
+    "小费": "小费文化",
+    "用餐礼仪": "就餐礼仪",
+    "服务员": "就餐礼仪",
+    "酒吧": "英美习俗",
+    "送礼": "社交礼仪",
+    "惹毛": "文化禁忌",
+    "sir": "英美习俗"
+}
+
+CULTURE_CREATOR_MAP = {
+    1: ("英语兔", "语言演化史"),
+    2: ("英语兔", "足球与牛津俚语"),
+    3: ("英语兔", "时间度量文化"),
+    4: ("英语兔", "师范大学由来"),
+    5: ("Real麦克老师", "中西思维图式"),
+    6: ("大胡子老师Jesse", "母语否定疑问句"),
+    7: ("JZ", "Small Talk艺术"),
+    8: ("Keyvi", "精英社交破冰"),
+    9: ("美丽大鸭梨", "北美公共安全感"),
+    10: ("小姨Priscilla", "低成本社交法则"),
+    11: ("侃哥侃英语", "就餐小费潜规则"),
+    12: ("托哥", "北美餐厅小费内幕"),
+    13: ("全球不知道", "小费制度历史渊源"),
+    14: ("阿福的英语课堂", "服务费vs小费"),
+    15: ("晓明哥DonLee", "中美用餐礼仪"),
+    16: ("励博教育奥斯卡", "英式餐厅眼神礼仪"),
+    17: ("老常带你看世界", "英国Pub点酒潜规则"),
+    18: ("Keyvi", "跨文化送礼法则"),
+    19: ("瑞得福全英播客", "5大交际隐私雷区"),
+    20: ("土拨鼠老师说英语", "英美Sir称谓差异")
 }
 
 SUBTITLE_MAP = {
+    "10分钟了解英语的前世今生：语言与历史文化演变": "英语兔：从古英语盎格鲁-撒克逊到现代全球通用语的千年演进史诗",
+    "football 与 soccer 的文化渊源：到底是谁发明的？": "为什么美国叫 soccer 英国叫 football？揭秘牛津俚语与现代足球分流史",
+    "为什么 second 既是“秒”又是“第二”？": "古巴比伦六十进制与中世纪拉丁天文文献的第二次细分秘密",
+    "为什么“师范大学”叫 normal university？": "法国高等师范学院与西方规范化范式教育历史的精彩溯源",
+    "什么是中西方语言思维的深层差异？": "Real麦克老师深度拆解：思维具象化 vs 结构化在日常表达中的冲突与融合",
+    "英语母语者是怎么想的：否定疑问句背后的认知逻辑": "为什么老外不说‘对，我不去’？彻底搞懂 Yes/No 的绝对真实性原则",
+    "Small Talk 艺术：英美社交最核心的破冰润滑剂": "打破社恐！掌握英美日常电梯、派对闲聊的底层安全感与破冰法门",
+    "老钱与精英社交：为什么 Small Talk 如此重要？": "浅层闲聊背后的社会化试探与非侵入式社交边界礼仪",
+    "在美国后我才懂：Small Talk 是陌生人最温柔的安全感": "北美公共空间礼貌习惯：用微笑与闲聊构筑人与人之间的防备卸载",
+    "美国最低成本的日常社交法则：真实文化观察": "如何用几句话化解尴尬、得体回应并在恰当节点礼貌结束对话",
+    "刚来美国吃饭看账单懵了：小费到底该怎么给？": "侃哥详解堂食、外带、服务费与 15%-20% 小费比例的计算潜规则",
+    "北美餐厅潜规则：服务员亲述小费内幕与底层规则": "托哥纽约实地探访：底薪制度下的小费生存机制与不给小费的后果",
+    "美国小费文化的历史起源与争议：到底该不该给？": "从欧洲贵族封建恩赐到美国内战后的商业转嫁：透视争议最大的制度",
+    "国外小费文化：服务费 ≠ 小费的那些规矩": "阿福老师划重点：Service Charge 与 Tip 的关键区别，避免重复掏钱",
+    "盘点中美用餐礼仪与餐桌潜规则差异": "刀叉摆放暗语、公共菜品分食习惯、大声招手与眼神示意的文化避坑",
+    "在英国餐厅喊“服务员”大声招手为什么很不礼貌？": "英式就餐的克制与优雅：为什么大声呼唤是失礼，如何用眼神呼叫结账",
+    "英国 Pub 酒吧潜规则：别踩点酒与品牌雷区": "酒吧没有服务生！吧台排队暗号、Round 轮流请酒文化与点单秘籍",
+    "跨文化送礼指南：老钱与王室社交的送礼之道": "西方礼仪精髓：重在手写感谢信与心意卡，如何送礼不给对方施加负担",
+    "一句话惹毛外国人：英美文化交际禁忌与个人边界": "薪资、年龄、婚姻、政治与宗教：不可逾越的 5 大个人隐私雷区",
+    "英美文化差异之“Sir”的潜规则：荣誉还是距离感？": "英国贵族骑士爵位 vs 美国服务性称呼：脱口秀爆笑揭秘文化认知的反差",
     "英语万能词 take 的真实含义到底是什么？": "物理溯源：主动伸手、吞下、承受与心理搬运的母语者图式",
     "背5000个单词，不如学这30个核心词：take 篇": "随身带走、主动拿取与花销承担的核心规律",
     "母语者眼里的 take，到底是什么感觉？": "take a photo / medicine / bus / shower 的母语通感",
@@ -232,9 +297,38 @@ def parse_markdown_with_frontmatter(file_path):
 
 def determine_smart_keyword(title, filename):
     lower_t = title.lower()
+    lower_f = filename.lower()
+    
+    # Priority 1: Culture & Etiquette Topics
+    culture_kw = [
+        ("前世今生", "文化溯源"),
+        ("soccer", "词源文化"),
+        ("second", "词源文化"),
+        ("normal university", "词源文化"),
+        ("思维差异", "思维差异"),
+        ("否定疑问句", "思维逻辑"),
+        ("small talk", "Small Talk"),
+        ("小费", "小费文化"),
+        ("用餐礼仪", "就餐礼仪"),
+        ("服务员", "就餐礼仪"),
+        ("酒吧", "英美习俗"),
+        ("送礼", "社交礼仪"),
+        ("惹毛", "文化禁忌"),
+        ("sir", "英美习俗")
+    ]
+    for k_trig, k_val in culture_kw:
+        if k_trig in lower_t or k_trig in lower_f:
+            return k_val
+            
+    # Priority 2: Verbs, Roots and Particles (avoiding substring false matches like 'on' in 'second')
     for k_trigger, k_word in KEYWORD_MAP.items():
-        if k_trigger.lower() in lower_t or k_trigger.lower() in filename.lower():
-            return k_word
+        trig = k_trigger.lower()
+        if len(trig) <= 3 and trig.isalpha():
+            if re.search(r'(?i)(?:\b|[\u4e00-\u9fa5\s_-])' + re.escape(trig) + r'(?:\b|[\u4e00-\u9fa5\s_-])', title):
+                return k_word
+        else:
+            if trig in lower_t or trig in lower_f:
+                return k_word
             
     m_root = re.search(r'词根\s*([a-zA-Z]+)', title)
     if m_root:
@@ -323,6 +417,11 @@ def main():
                 
             kw = determine_smart_keyword(raw_title, vf)
             
+            item_tags = [author_name, cfg['default_tag'], kw]
+            if author_name == '英语文化与习俗' and idx in CULTURE_CREATOR_MAP:
+                speaker, topic_tag = CULTURE_CREATOR_MAP[idx]
+                item_tags.extend([speaker, topic_tag])
+            
             all_items.append({
                 'id': f"{author_prefix}_{idx:02d}",
                 'num': idx,
@@ -334,7 +433,7 @@ def main():
                 'author_avatar': cfg['avatar'],
                 'type': 'video',
                 'category': '短视频',
-                'tags': [author_name, cfg['default_tag'], kw],
+                'tags': item_tags,
                 'poster': f"thumbnails/{thumb_name}",
                 'src': rel_src,
                 'size_mb': sz_mb,

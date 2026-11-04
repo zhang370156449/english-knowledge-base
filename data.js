@@ -3,11 +3,11 @@ window.LEXI_DATA = {
   "version": "2.2.0",
   "updated_at": "auto",
   "stats": {
-    "total_videos": 139,
+    "total_videos": 159,
     "total_articles": 0,
     "total_books": 0,
-    "total_items": 139,
-    "authors": ["Ryan的英语笔记", "夏风英语", "晓试Ezam", "曲木古也", "每天蹲Tibo", "瑞杰谈英语", "英语兔", "长安老张", "阿深 Deep"]
+    "total_items": 159,
+    "authors": ["Ryan的英语笔记", "夏风英语", "晓试Ezam", "曲木古也", "每天蹲Tibo", "瑞杰谈英语", "英语兔", "英语文化与习俗", "长安老张", "阿深 Deep"]
   },
   "items": [
   {
@@ -181,7 +181,7 @@ window.LEXI_DATA = {
   {
     "id": "rn_09",
     "num": 9,
-    "keyword": "for",
+    "keyword": "fore",
     "title": "从before记住前缀fore：前面",
     "subtitle": "点击立即在沉浸剧场中播放与深度拆解",
     "author": "Ryan的英语笔记",
@@ -192,7 +192,7 @@ window.LEXI_DATA = {
     "tags": [
       "Ryan的英语笔记",
       "手绘词根",
-      "for"
+      "fore"
     ],
     "poster": "thumbnails/rn_09.jpg",
     "src": "Ryan的英语笔记/09_从before记住前缀fore：前面.mp4",
@@ -391,7 +391,7 @@ window.LEXI_DATA = {
   {
     "id": "rn_19",
     "num": 19,
-    "keyword": "cip/ceiv",
+    "keyword": "英美习俗",
     "title": "从阿sir开始记住抓拿的系列单词。",
     "subtitle": "点击立即在沉浸剧场中播放与深度拆解",
     "author": "Ryan的英语笔记",
@@ -402,7 +402,7 @@ window.LEXI_DATA = {
     "tags": [
       "Ryan的英语笔记",
       "手绘词根",
-      "cip/ceiv"
+      "英美习俗"
     ],
     "poster": "thumbnails/rn_19.jpg",
     "src": "Ryan的英语笔记/19_从阿sir开始记住抓拿的系列单词。.mp4",
@@ -412,7 +412,7 @@ window.LEXI_DATA = {
   {
     "id": "rn_20",
     "num": 20,
-    "keyword": "on",
+    "keyword": "contra",
     "title": "由contra带来的这些单词你都认识吗？",
     "subtitle": "点击立即在沉浸剧场中播放与深度拆解",
     "author": "Ryan的英语笔记",
@@ -423,7 +423,7 @@ window.LEXI_DATA = {
     "tags": [
       "Ryan的英语笔记",
       "手绘词根",
-      "on"
+      "contra"
     ],
     "poster": "thumbnails/rn_20.jpg",
     "src": "Ryan的英语笔记/20_由contra带来的这些单词你都认识吗？.mp4",
@@ -643,7 +643,7 @@ window.LEXI_DATA = {
   {
     "id": "xf_06",
     "num": 6,
-    "keyword": "as",
+    "keyword": "pass",
     "title": "两分钟带你用词根 pass 吃透一组词",
     "subtitle": "pass 吃透一组词",
     "author": "夏风英语",
@@ -654,7 +654,7 @@ window.LEXI_DATA = {
     "tags": [
       "夏风英语",
       "母语者视角",
-      "as"
+      "pass"
     ],
     "poster": "thumbnails/xf_06.jpg",
     "src": "夏风英语/06_两分钟带你用词根 pass 吃透一组词.mp4",
@@ -916,7 +916,7 @@ window.LEXI_DATA = {
   {
     "id": "xf_19",
     "num": 19,
-    "keyword": "at",
+    "keyword": "rather",
     "title": "两分钟带你从母语者视角记住 rather",
     "subtitle": "rather",
     "author": "夏风英语",
@@ -927,7 +927,7 @@ window.LEXI_DATA = {
     "tags": [
       "夏风英语",
       "母语者视角",
-      "at"
+      "rather"
     ],
     "poster": "thumbnails/xf_19.jpg",
     "src": "夏风英语/19_两分钟带你从母语者视角记住 rather.mp4",
@@ -1105,7 +1105,7 @@ window.LEXI_DATA = {
   {
     "id": "xf_28",
     "num": 28,
-    "keyword": "in",
+    "keyword": "spring",
     "title": "两分钟带你从母语者视角记住 spring",
     "subtitle": "spring",
     "author": "夏风英语",
@@ -1116,7 +1116,7 @@ window.LEXI_DATA = {
     "tags": [
       "夏风英语",
       "母语者视角",
-      "in"
+      "spring"
     ],
     "poster": "thumbnails/xf_28.jpg",
     "src": "夏风英语/28_两分钟带你从母语者视角记住 spring.mp4",
@@ -1126,7 +1126,7 @@ window.LEXI_DATA = {
   {
     "id": "ez_01",
     "num": 1,
-    "keyword": "in",
+    "keyword": "tain",
     "title": "一个词根tain，带你无痛串记8个高频词",
     "subtitle": "点击立即在沉浸剧场中播放与深度拆解",
     "author": "晓试Ezam",
@@ -1137,7 +1137,7 @@ window.LEXI_DATA = {
     "tags": [
       "晓试Ezam",
       "词根串记",
-      "in"
+      "tain"
     ],
     "poster": "thumbnails/ez_01.jpg",
     "src": "晓试Ezam/01_一个词根tain，带你无痛串记8个高频词.mp4",
@@ -1441,7 +1441,7 @@ window.LEXI_DATA = {
   {
     "id": "ez_16",
     "num": 16,
-    "keyword": "for",
+    "keyword": "form",
     "title": "一个词根form，串记8个高频单词",
     "subtitle": "点击立即在沉浸剧场中播放与深度拆解",
     "author": "晓试Ezam",
@@ -1452,7 +1452,7 @@ window.LEXI_DATA = {
     "tags": [
       "晓试Ezam",
       "词根串记",
-      "for"
+      "form"
     ],
     "poster": "thumbnails/ez_16.jpg",
     "src": "晓试Ezam/16_一个词根form，串记8个高频单词.mp4",
@@ -1735,7 +1735,7 @@ window.LEXI_DATA = {
   {
     "id": "rb_03",
     "num": 3,
-    "keyword": "at",
+    "keyword": "late/latter",
     "title": "late later latter 你能分清吗？ late later latter latest last ",
     "subtitle": "later latter 你能分清吗？ late later latter latest last ",
     "author": "英语兔",
@@ -1746,7 +1746,7 @@ window.LEXI_DATA = {
     "tags": [
       "英语兔",
       "语法与发音",
-      "at"
+      "late/latter"
     ],
     "poster": "thumbnails/rb_03.jpg",
     "src": "英语兔/03_late later latter 你能分清吗？ late later latter latest last .mp4",
@@ -1756,7 +1756,7 @@ window.LEXI_DATA = {
   {
     "id": "rb_04",
     "num": 4,
-    "keyword": "on",
+    "keyword": "con-",
     "title": "咱们来看看包含前缀con-的几个形近词.",
     "subtitle": "点击立即在沉浸剧场中播放与深度拆解",
     "author": "英语兔",
@@ -1767,7 +1767,7 @@ window.LEXI_DATA = {
     "tags": [
       "英语兔",
       "语法与发音",
-      "on"
+      "con-"
     ],
     "poster": "thumbnails/rb_04.jpg",
     "src": "英语兔/04_咱们来看看包含前缀con-的几个形近词..mp4",
@@ -1899,6 +1899,466 @@ window.LEXI_DATA = {
     "src": "英语兔/10_这么多will是啥意思？ Will Will will Will Will's will 是啥意思？.mp4",
     "size_mb": 7.29,
     "duration_est": "3:23"
+  },
+  {
+    "id": "cl_01",
+    "num": 1,
+    "keyword": "文化溯源",
+    "title": "10分钟了解英语的前世今生：语言与历史文化演变",
+    "subtitle": "英语兔：从古英语盎格鲁-撒克逊到现代全球通用语的千年演进史诗",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "文化溯源",
+      "英语兔",
+      "语言演化史"
+    ],
+    "poster": "thumbnails/cl_01.jpg",
+    "src": "英语文化与习俗/01_10分钟了解英语的前世今生：语言与历史文化演变.mp4",
+    "size_mb": 33.92,
+    "duration_est": "9:39"
+  },
+  {
+    "id": "cl_02",
+    "num": 2,
+    "keyword": "词源文化",
+    "title": "football 与 soccer 的文化渊源：到底是谁发明的？",
+    "subtitle": "为什么美国叫 soccer 英国叫 football？揭秘牛津俚语与现代足球分流史",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "词源文化",
+      "英语兔",
+      "足球与牛津俚语"
+    ],
+    "poster": "thumbnails/cl_02.jpg",
+    "src": "英语文化与习俗/02_football 与 soccer 的文化渊源：到底是谁发明的？.mp4",
+    "size_mb": 8.72,
+    "duration_est": "4:01"
+  },
+  {
+    "id": "cl_03",
+    "num": 3,
+    "keyword": "词源文化",
+    "title": "为什么 second 既是“秒”又是“第二”？",
+    "subtitle": "古巴比伦六十进制与中世纪拉丁天文文献的第二次细分秘密",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "词源文化",
+      "英语兔",
+      "时间度量文化"
+    ],
+    "poster": "thumbnails/cl_03.jpg",
+    "src": "英语文化与习俗/03_为什么 second 既是“秒”又是“第二”？.mp4",
+    "size_mb": 5.14,
+    "duration_est": "2:27"
+  },
+  {
+    "id": "cl_04",
+    "num": 4,
+    "keyword": "词源文化",
+    "title": "为什么“师范大学”叫 normal university？",
+    "subtitle": "法国高等师范学院与西方规范化范式教育历史的精彩溯源",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "词源文化",
+      "英语兔",
+      "师范大学由来"
+    ],
+    "poster": "thumbnails/cl_04.jpg",
+    "src": "英语文化与习俗/04_为什么“师范大学”叫 normal university？.mp4",
+    "size_mb": 3.33,
+    "duration_est": "1:32"
+  },
+  {
+    "id": "cl_05",
+    "num": 5,
+    "keyword": "思维差异",
+    "title": "什么是中西方语言思维的深层差异？",
+    "subtitle": "Real麦克老师深度拆解：思维具象化 vs 结构化在日常表达中的冲突与融合",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "思维差异",
+      "Real麦克老师",
+      "中西思维图式"
+    ],
+    "poster": "thumbnails/cl_05.jpg",
+    "src": "英语文化与习俗/05_什么是中西方语言思维的深层差异？.mp4",
+    "size_mb": 15.39,
+    "duration_est": "3:37"
+  },
+  {
+    "id": "cl_06",
+    "num": 6,
+    "keyword": "思维逻辑",
+    "title": "英语母语者是怎么想的：否定疑问句背后的认知逻辑",
+    "subtitle": "为什么老外不说‘对，我不去’？彻底搞懂 Yes/No 的绝对真实性原则",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "思维逻辑",
+      "大胡子老师Jesse",
+      "母语否定疑问句"
+    ],
+    "poster": "thumbnails/cl_06.jpg",
+    "src": "英语文化与习俗/06_英语母语者是怎么想的：否定疑问句背后的认知逻辑.mp4",
+    "size_mb": 37.86,
+    "duration_est": "3:22"
+  },
+  {
+    "id": "cl_07",
+    "num": 7,
+    "keyword": "Small Talk",
+    "title": "Small Talk 艺术：英美社交最核心的破冰润滑剂",
+    "subtitle": "打破社恐！掌握英美日常电梯、派对闲聊的底层安全感与破冰法门",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "Small Talk",
+      "JZ",
+      "Small Talk艺术"
+    ],
+    "poster": "thumbnails/cl_07.jpg",
+    "src": "英语文化与习俗/07_Small Talk 艺术：英美社交最核心的破冰润滑剂.mp4",
+    "size_mb": 41.12,
+    "duration_est": "4:00"
+  },
+  {
+    "id": "cl_08",
+    "num": 8,
+    "keyword": "Small Talk",
+    "title": "老钱与精英社交：为什么 Small Talk 如此重要？",
+    "subtitle": "浅层闲聊背后的社会化试探与非侵入式社交边界礼仪",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "Small Talk",
+      "Keyvi",
+      "精英社交破冰"
+    ],
+    "poster": "thumbnails/cl_08.jpg",
+    "src": "英语文化与习俗/08_老钱与精英社交：为什么 Small Talk 如此重要？.mp4",
+    "size_mb": 28.56,
+    "duration_est": "2:48"
+  },
+  {
+    "id": "cl_09",
+    "num": 9,
+    "keyword": "Small Talk",
+    "title": "在美国后我才懂：Small Talk 是陌生人最温柔的安全感",
+    "subtitle": "北美公共空间礼貌习惯：用微笑与闲聊构筑人与人之间的防备卸载",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "Small Talk",
+      "美丽大鸭梨",
+      "北美公共安全感"
+    ],
+    "poster": "thumbnails/cl_09.jpg",
+    "src": "英语文化与习俗/09_在美国后我才懂：Small Talk 是陌生人最温柔的安全感.mp4",
+    "size_mb": 5.53,
+    "duration_est": "0:51"
+  },
+  {
+    "id": "cl_10",
+    "num": 10,
+    "keyword": "Core",
+    "title": "美国最低成本的日常社交法则：真实文化观察",
+    "subtitle": "如何用几句话化解尴尬、得体回应并在恰当节点礼貌结束对话",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "Core",
+      "小姨Priscilla",
+      "低成本社交法则"
+    ],
+    "poster": "thumbnails/cl_10.jpg",
+    "src": "英语文化与习俗/10_美国最低成本的日常社交法则：真实文化观察.mp4",
+    "size_mb": 50.92,
+    "duration_est": "2:33"
+  },
+  {
+    "id": "cl_11",
+    "num": 11,
+    "keyword": "小费文化",
+    "title": "刚来美国吃饭看账单懵了：小费到底该怎么给？",
+    "subtitle": "侃哥详解堂食、外带、服务费与 15%-20% 小费比例的计算潜规则",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "小费文化",
+      "侃哥侃英语",
+      "就餐小费潜规则"
+    ],
+    "poster": "thumbnails/cl_11.jpg",
+    "src": "英语文化与习俗/11_刚来美国吃饭看账单懵了：小费到底该怎么给？.mp4",
+    "size_mb": 17.04,
+    "duration_est": "2:21"
+  },
+  {
+    "id": "cl_12",
+    "num": 12,
+    "keyword": "小费文化",
+    "title": "北美餐厅潜规则：服务员亲述小费内幕与底层规则",
+    "subtitle": "托哥纽约实地探访：底薪制度下的小费生存机制与不给小费的后果",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "小费文化",
+      "托哥",
+      "北美餐厅小费内幕"
+    ],
+    "poster": "thumbnails/cl_12.jpg",
+    "src": "英语文化与习俗/12_北美餐厅潜规则：服务员亲述小费内幕与底层规则.mp4",
+    "size_mb": 69.71,
+    "duration_est": "4:35"
+  },
+  {
+    "id": "cl_13",
+    "num": 13,
+    "keyword": "小费文化",
+    "title": "美国小费文化的历史起源与争议：到底该不该给？",
+    "subtitle": "从欧洲贵族封建恩赐到美国内战后的商业转嫁：透视争议最大的制度",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "小费文化",
+      "全球不知道",
+      "小费制度历史渊源"
+    ],
+    "poster": "thumbnails/cl_13.jpg",
+    "src": "英语文化与习俗/13_美国小费文化的历史起源与争议：到底该不该给？.mp4",
+    "size_mb": 8.08,
+    "duration_est": "0:58"
+  },
+  {
+    "id": "cl_14",
+    "num": 14,
+    "keyword": "小费文化",
+    "title": "国外小费文化：服务费 ≠ 小费的那些规矩",
+    "subtitle": "阿福老师划重点：Service Charge 与 Tip 的关键区别，避免重复掏钱",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "小费文化",
+      "阿福的英语课堂",
+      "服务费vs小费"
+    ],
+    "poster": "thumbnails/cl_14.jpg",
+    "src": "英语文化与习俗/14_国外小费文化：服务费 ≠ 小费的那些规矩.mp4",
+    "size_mb": 15.85,
+    "duration_est": "1:18"
+  },
+  {
+    "id": "cl_15",
+    "num": 15,
+    "keyword": "就餐礼仪",
+    "title": "盘点中美用餐礼仪与餐桌潜规则差异",
+    "subtitle": "刀叉摆放暗语、公共菜品分食习惯、大声招手与眼神示意的文化避坑",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "就餐礼仪",
+      "晓明哥DonLee",
+      "中美用餐礼仪"
+    ],
+    "poster": "thumbnails/cl_15.jpg",
+    "src": "英语文化与习俗/15_盘点中美用餐礼仪与餐桌潜规则差异.mp4",
+    "size_mb": 20.01,
+    "duration_est": "2:12"
+  },
+  {
+    "id": "cl_16",
+    "num": 16,
+    "keyword": "就餐礼仪",
+    "title": "在英国餐厅喊“服务员”大声招手为什么很不礼貌？",
+    "subtitle": "英式就餐的克制与优雅：为什么大声呼唤是失礼，如何用眼神呼叫结账",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "就餐礼仪",
+      "励博教育奥斯卡",
+      "英式餐厅眼神礼仪"
+    ],
+    "poster": "thumbnails/cl_16.jpg",
+    "src": "英语文化与习俗/16_在英国餐厅喊“服务员”大声招手为什么很不礼貌？.mp4",
+    "size_mb": 9.39,
+    "duration_est": "0:59"
+  },
+  {
+    "id": "cl_17",
+    "num": 17,
+    "keyword": "英美习俗",
+    "title": "英国 Pub 酒吧潜规则：别踩点酒与品牌雷区",
+    "subtitle": "酒吧没有服务生！吧台排队暗号、Round 轮流请酒文化与点单秘籍",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "英美习俗",
+      "老常带你看世界",
+      "英国Pub点酒潜规则"
+    ],
+    "poster": "thumbnails/cl_17.jpg",
+    "src": "英语文化与习俗/17_英国 Pub 酒吧潜规则：别踩点酒与品牌雷区.mp4",
+    "size_mb": 9.77,
+    "duration_est": "0:51"
+  },
+  {
+    "id": "cl_18",
+    "num": 18,
+    "keyword": "社交礼仪",
+    "title": "跨文化送礼指南：老钱与王室社交的送礼之道",
+    "subtitle": "西方礼仪精髓：重在手写感谢信与心意卡，如何送礼不给对方施加负担",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "社交礼仪",
+      "Keyvi",
+      "跨文化送礼法则"
+    ],
+    "poster": "thumbnails/cl_18.jpg",
+    "src": "英语文化与习俗/18_跨文化送礼指南：老钱与王室社交的送礼之道.mp4",
+    "size_mb": 30.33,
+    "duration_est": "2:43"
+  },
+  {
+    "id": "cl_19",
+    "num": 19,
+    "keyword": "文化禁忌",
+    "title": "一句话惹毛外国人：英美文化交际禁忌与个人边界",
+    "subtitle": "薪资、年龄、婚姻、政治与宗教：不可逾越的 5 大个人隐私雷区",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "文化禁忌",
+      "瑞得福全英播客",
+      "5大交际隐私雷区"
+    ],
+    "poster": "thumbnails/cl_19.jpg",
+    "src": "英语文化与习俗/19_一句话惹毛外国人：英美文化交际禁忌与个人边界.mp4",
+    "size_mb": 25.57,
+    "duration_est": "2:47"
+  },
+  {
+    "id": "cl_20",
+    "num": 20,
+    "keyword": "英美习俗",
+    "title": "英美文化差异之“Sir”的潜规则：荣誉还是距离感？",
+    "subtitle": "英国贵族骑士爵位 vs 美国服务性称呼：脱口秀爆笑揭秘文化认知的反差",
+    "author": "英语文化与习俗",
+    "author_desc": "英美文化渊源 · 社交礼仪 · Small Talk与潜规则",
+    "author_avatar": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=120&h=120&fit=crop&crop=faces",
+    "type": "video",
+    "category": "短视频",
+    "tags": [
+      "英语文化与习俗",
+      "英语文化",
+      "英美习俗",
+      "土拨鼠老师说英语",
+      "英美Sir称谓差异"
+    ],
+    "poster": "thumbnails/cl_20.jpg",
+    "src": "英语文化与习俗/20_英美文化差异之“Sir”的潜规则：荣誉还是距离感？.mp4",
+    "size_mb": 5.33,
+    "duration_est": "0:58"
   },
   {
     "id": "lz_01",
@@ -2470,7 +2930,7 @@ window.LEXI_DATA = {
   {
     "id": "as_01",
     "num": 1,
-    "keyword": "on",
+    "keyword": "only",
     "title": "only 放错地方，求婚就黄了 想说「我只爱你」，她听成「没人爱你」。only 贴着谁，就管谁。",
     "subtitle": "放错地方，求婚就黄了 想说「我只爱你」，她听成「没人爱你」。only 贴着谁，就管谁。",
     "author": "阿深 Deep",
@@ -2481,7 +2941,7 @@ window.LEXI_DATA = {
     "tags": [
       "阿深 Deep",
       "语感底层",
-      "on"
+      "only"
     ],
     "poster": "thumbnails/as_01.jpg",
     "src": "阿深 Deep/01_only 放错地方，求婚就黄了 想说「我只爱你」，她听成「没人爱你」。only 贴着谁，就管谁。.mp4",
@@ -2575,7 +3035,7 @@ window.LEXI_DATA = {
   {
     "id": "as_06",
     "num": 6,
-    "keyword": "as",
+    "keyword": "broke",
     "title": "学了十年的现在完成时，一句话讲明白 I broke my leg last year：腿早好了。 I’ve broken",
     "subtitle": "I broke my leg last year：腿早好了。 I’ve broken",
     "author": "阿深 Deep",
@@ -2586,7 +3046,7 @@ window.LEXI_DATA = {
     "tags": [
       "阿深 Deep",
       "语感底层",
-      "as"
+      "broke"
     ],
     "poster": "thumbnails/as_06.jpg",
     "src": "阿深 Deep/06_学了十年的现在完成时，一句话讲明白 I broke my leg last year：腿早好了。 I’ve broken.mp4",
@@ -2596,7 +3056,7 @@ window.LEXI_DATA = {
   {
     "id": "as_07",
     "num": 7,
-    "keyword": "in",
+    "keyword": "feeling",
     "title": "同事说 I’m feeling blue，我回：蓝色好看 每个颜色单词都认识，合起来却全错。 跟着他倒霉的一天，9 个颜",
     "subtitle": "I’m feeling blue，我回：蓝色好看 每个颜色单词都认识，合起来却全错。 跟着他倒霉的一天，9 个颜",
     "author": "阿深 Deep",
@@ -2607,7 +3067,7 @@ window.LEXI_DATA = {
     "tags": [
       "阿深 Deep",
       "语感底层",
-      "in"
+      "feeling"
     ],
     "poster": "thumbnails/as_07.jpg",
     "src": "阿深 Deep/07_同事说 I’m feeling blue，我回：蓝色好看 每个颜色单词都认识，合起来却全错。 跟着他倒霉的一天，9 个颜.mp4",
@@ -2680,7 +3140,7 @@ window.LEXI_DATA = {
   {
     "id": "as_11",
     "num": 11,
-    "keyword": "in",
+    "keyword": "that",
     "title": "老外说 That’s interesting，可能是在说不行 都说老外说话直接，其实他们也会拐弯。 听懂每个词，不等于听",
     "subtitle": "That’s interesting，可能是在说不行 都说老外说话直接，其实他们也会拐弯。 听懂每个词，不等于听",
     "author": "阿深 Deep",
@@ -2691,7 +3151,7 @@ window.LEXI_DATA = {
     "tags": [
       "阿深 Deep",
       "语感底层",
-      "in"
+      "that"
     ],
     "poster": "thumbnails/as_11.jpg",
     "src": "阿深 Deep/11_老外说 That’s interesting，可能是在说不行 都说老外说话直接，其实他们也会拐弯。 听懂每个词，不等于听.mp4",
@@ -2743,7 +3203,7 @@ window.LEXI_DATA = {
   {
     "id": "as_14",
     "num": 14,
-    "keyword": "do",
+    "keyword": "see/look",
     "title": "为什么「期待」是 look forward 上周不是 up week，下周也不是 down week。 因为中文的时间像",
     "subtitle": "look forward 上周不是 up week，下周也不是 down week。 因为中文的时间像",
     "author": "阿深 Deep",
@@ -2754,7 +3214,7 @@ window.LEXI_DATA = {
     "tags": [
       "阿深 Deep",
       "语感底层",
-      "do"
+      "see/look"
     ],
     "poster": "thumbnails/as_14.jpg",
     "src": "阿深 Deep/14_为什么「期待」是 look forward 上周不是 up week，下周也不是 down week。 因为中文的时间像.mp4",
@@ -2827,7 +3287,7 @@ window.LEXI_DATA = {
   {
     "id": "as_18",
     "num": 18,
-    "keyword": "in",
+    "keyword": "ing",
     "title": "I’m boring 不是「我好无聊」 不看人和物，看光从哪来。发光的用 ing，被照到的用 ed。别只做 intere",
     "subtitle": "boring 不是「我好无聊」 不看人和物，看光从哪来。发光的用 ing，被照到的用 ed。别只做 intere",
     "author": "阿深 Deep",
@@ -2838,7 +3298,7 @@ window.LEXI_DATA = {
     "tags": [
       "阿深 Deep",
       "语感底层",
-      "in"
+      "ing"
     ],
     "poster": "thumbnails/as_18.jpg",
     "src": "阿深 Deep/18_I’m boring 不是「我好无聊」 不看人和物，看光从哪来。发光的用 ing，被照到的用 ed。别只做 intere.mp4",
