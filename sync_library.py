@@ -51,10 +51,10 @@ AUTHOR_CONFIGS = {
         'default_tag': '词根串记'
     },
     '英语兔': {
-        'desc': '全网语法标杆 · 语音与句型心法',
+        'desc': '全网语法标杆 · 83节系统语法/音标/发音全集',
         'avatar': 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=120&h=120&fit=crop&crop=faces',
         'prefix': 'rb',
-        'default_tag': '语法与发音'
+        'default_tag': '系统语法'
     },
     '长安老张': {
         'desc': '万能词物理溯源 · 颠覆死记硬背',
@@ -246,6 +246,61 @@ TITLE_DISPLAY_MAP = {
     "最重要的英文单词 have，90人误解了": "最重要的英文单词 have，90%的人都误解了"
 }
 
+RABBIT_GRAMMAR_META = {
+    1: ("冠词", "不定冠词 a/an、定冠词 the 与零冠词的底层指代逻辑与本质区别"),
+    2: ("主谓一致", "单复数视角的本质真相，为什么 collective nouns 动词时单时复"),
+    3: ("省略", "语言效率的极致追求：日常口语与书面语中的 7 种自然省略规律"),
+    4: ("强调", "强调句 it is...that 与助动词 do 的高阶情感重音表达心法"),
+    5: ("介词", "全网最通透介词图解：用三维几何降维打通全部核心介词原像"),
+    6: ("独立主格", "分词作状语的终极进阶：逻辑主语独立并存的母语心智"),
+    7: ("倒装句", "完全倒装与部分倒装的情绪推演：否定词前置与平衡句式的核心画面"),
+    8: ("被动语态", "动作承受者锚点与客观叙事视角：何时必须用被动、何时万万不可用"),
+    9: ("非谓语", "彻底理清不定式(未发/目的)、动名词(事实/抽象)、分词(进行/被动)"),
+    10: ("状语从句", "让步状语从句：although/though/even if 的预期冲突与逻辑退让"),
+    11: ("状语从句", "目的状语从句：so that/in order that 的心中指向与未来图景"),
+    12: ("状语从句", "原因状语从句：because/since/as/for 认知层级与已知信息分布"),
+    13: ("状语从句", "方式状语从句：as if/as though 的虚拟映射与如实临摹"),
+    14: ("状语从句", "结果状语从句：so...that 与 such...that 的极端推演与尘埃落定"),
+    15: ("状语从句", "条件状语从句：if/unless/provided 假设时空与主将从现真相"),
+    16: ("状语从句", "比较状语从句：as...as 与 more...than 的标尺量度与等额缩减"),
+    17: ("状语从句", "地点状语从句：where 与 wherever 的空间坐标与泛指场域"),
+    18: ("状语从句", "时间状语从句：when/while/as 动作交叠与时间轴先后对齐心法"),
+    19: ("宾语从句", "动作对象的完整展开：that/whether 与疑问词引导的名词性从句"),
+    20: ("同位语从句", "抽象名词的等号解构：fact/idea/news 后面的深度事实补全"),
+    21: ("表语从句", "系动词后的身份说明：主语本质属性与状态认知的全面延伸"),
+    22: ("宾补从句", "主语+谓语+宾语+补语：让动作对象状态更加清晰的结构化心智"),
+    23: ("主语从句", "形式主语 it 的偷懒心理：把沉重大头移到句尾的平衡美学"),
+    24: ("定语从句", "形容词性关系从句：先行词与关系代词 which/who/that 的无缝拼接"),
+    25: ("从句总纲", "主从复合句全景俯瞰：从名词从句、定语从句到状语从句的骨架结构"),
+    26: ("虚拟语气", "时空拉远与心理距离：用过去时表达非真实愿望与假设的底层心理学"),
+    27: ("16种时态", "1小时史诗级时态大课：4种时间 × 4种状态构建的完美时空矩阵"),
+    28: ("语法体系", "封神之作：一个视频彻底说清整个英语语法认知框架与宏观蓝图")
+}
+
+RABBIT_PRON_META = {
+    1: ("不送气音", "声带与气流的物理控制：sp/st/sk 后的轻微浊化真相与生理原理"),
+    2: ("喉塞音", "声门闭锁产生的神秘停顿：母语者口语最地道的停顿标志音详解"),
+    3: ("爆破音", "鼻爆破与舌爆破：气流改道鼻腔与舌侧释压的地道省力技巧"),
+    4: ("失去爆破", "不完全爆破与无声除阻：相邻爆破音只成阻不发音的连读基本功"),
+    5: ("英语语调", "26分钟母语腔调指南：升调、降调、平调与句子重音的音乐起伏"),
+    6: ("等时性", "节奏与等时性规律：为什么中式字字均长会毁掉英语的律动感"),
+    7: ("缩读", "口语中的紧缩音 Contraction：gonna/wanna/gotta 的物理缩合规律"),
+    8: ("弱读", "Weak Forms 核心解密：介词、代词、助动词的虚化与中央元音化"),
+    9: ("省音", "Elision 与吞音规律：H-dropping 与 G-dropping 的地道口语偷懒心法"),
+    10: ("同化异化", "相邻音素相互影响的物理发音省力法则与地道语流变化"),
+    11: ("连读加音", "元音与元音碰撞时的连接滑音 /j/ 与 /w/ 的自然过渡心法"),
+    12: ("连音心法", "辅音+元音的狭义连读：像母语者一样如行云流水般平滑发音")
+}
+
+RABBIT_VOCAB_META = {
+    1: ("古英语", "thou, thee, ye, you, thy, thine：英语第二人称代词的千年演化史"),
+    2: ("词汇通识", "为什么中国人背了上万单词依然看不懂？打破中文逐字对应翻译"),
+    3: ("词汇之最", "打破认知！究竟哪个才是英语里真正被词典承认的最长单词？"),
+    4: ("词汇演进", "从化学大分子到长单词背后的构词野心与学术造词规则"),
+    5: ("构词法", "派生、复合、转化、截短：英语词汇量从 1000 暴涨至 10000 的杠杆"),
+    6: ("前世今生", "英语的前世今生：从日耳曼部落方言、诺曼法语侵略到全球通用语")
+}
+
 def extract_thumbnail_if_missing(video_path, out_thumb_path):
     if os.path.exists(out_thumb_path) and os.path.getsize(out_thumb_path) > 1024:
         return True
@@ -416,23 +471,54 @@ def main():
             extract_thumbnail_if_missing(v_path, thumb_path)
             dur_str = get_video_duration_str(v_path)
             
-            # Extract clean title from filename
-            m = re.match(r'^(\d+)_(.+)\.\w+$', vf)
-            raw_title = m.group(2) if m else os.path.splitext(vf)[0]
-            display_title = TITLE_DISPLAY_MAP.get(raw_title, raw_title)
-            
-            # Check custom subtitle map
-            subtitle = SUBTITLE_MAP.get(raw_title, '') or SUBTITLE_MAP.get(display_title, '')
-            if not subtitle:
-                parts = display_title.split(' ', 1)
-                subtitle = parts[1] if len(parts) > 1 else '点击立即在沉浸剧场中播放与深度拆解'
+            if author_name == '英语兔':
+                m_rb = re.match(r'^(语法|发音|词汇|音标|精选)_(\d+)_(.+)\.mp4$', vf)
+                if m_rb:
+                    mod_type = m_rb.group(1)
+                    ep_num = int(m_rb.group(2))
+                    raw_title = m_rb.group(3)
+                    if mod_type == '语法':
+                        kw, subtitle = RABBIT_GRAMMAR_META.get(ep_num, ('系统语法', f'英语兔系统语法：第 {ep_num} 讲'))
+                        item_tags = ['英语兔', '系统语法', kw]
+                    elif mod_type == '发音':
+                        kw, subtitle = RABBIT_PRON_META.get(ep_num, ('发音技巧', f'英语兔发音指南：第 {ep_num} 讲'))
+                        item_tags = ['英语兔', '发音技巧', kw]
+                    elif mod_type == '词汇':
+                        kw, subtitle = RABBIT_VOCAB_META.get(ep_num, ('词汇构词', f'英语兔词汇探秘：第 {ep_num} 讲'))
+                        item_tags = ['英语兔', '词汇构词', kw]
+                    elif mod_type == '音标':
+                        kw = '国际音标'
+                        subtitle = f'英语兔48个国际音标全解：第 {ep_num} 讲 · {raw_title}'
+                        item_tags = ['英语兔', '国际音标', '音标发音']
+                    else:
+                        kw = '精选短片'
+                        subtitle = SUBTITLE_MAP.get(raw_title, f'英语兔经典碎片趣析：第 {ep_num} 讲')
+                        item_tags = ['英语兔', '精选短片', '趣味剖析']
+                    display_title = raw_title
+                else:
+                    raw_title = os.path.splitext(vf)[0]
+                    display_title = raw_title
+                    kw = '英语兔'
+                    subtitle = '英语兔经典解析'
+                    item_tags = ['英语兔', '系统语法']
+            else:
+                # Extract clean title from filename
+                m = re.match(r'^(\d+)_(.+)\.\w+$', vf)
+                raw_title = m.group(2) if m else os.path.splitext(vf)[0]
+                display_title = TITLE_DISPLAY_MAP.get(raw_title, raw_title)
                 
-            kw = determine_smart_keyword(display_title, vf)
-            
-            item_tags = [author_name, cfg['default_tag'], kw]
-            if author_name == '英语文化与习俗' and idx in CULTURE_CREATOR_MAP:
-                speaker, topic_tag = CULTURE_CREATOR_MAP[idx]
-                item_tags.extend([speaker, topic_tag])
+                # Check custom subtitle map
+                subtitle = SUBTITLE_MAP.get(raw_title, '') or SUBTITLE_MAP.get(display_title, '')
+                if not subtitle:
+                    parts = display_title.split(' ', 1)
+                    subtitle = parts[1] if len(parts) > 1 else '点击立即在沉浸剧场中播放与深度拆解'
+                    
+                kw = determine_smart_keyword(display_title, vf)
+                
+                item_tags = [author_name, cfg['default_tag'], kw]
+                if author_name == '英语文化与习俗' and idx in CULTURE_CREATOR_MAP:
+                    speaker, topic_tag = CULTURE_CREATOR_MAP[idx]
+                    item_tags.extend([speaker, topic_tag])
             
             all_items.append({
                 'id': f"{author_prefix}_{idx:02d}",

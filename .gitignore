@@ -16,6 +16,9 @@ Desktop.ini
 .vscode/
 .idea/
 *.tmp
+_staging/
+scratch/
+scratch_*.json
 
 # Local heavy courses (exceeds GitHub limits)
 瑞杰老师 30 天英语实战训练营(1)/
