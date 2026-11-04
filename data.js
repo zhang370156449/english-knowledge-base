@@ -2377,7 +2377,7 @@ window.LEXI_DATA = {
       "know"
     ],
     "poster": "thumbnails/lz_01.jpg",
-    "src": "长安老张/90%中国人都误解的词 Know.mp4",
+    "src": "长安老张/90中国人都误解的词 Know.mp4",
     "size_mb": 11.35,
     "duration_est": "2:32"
   },
@@ -2797,7 +2797,7 @@ window.LEXI_DATA = {
       "have"
     ],
     "poster": "thumbnails/lz_21.jpg",
-    "src": "长安老张/最重要的英文单词 have，90%的人都误解了.mp4",
+    "src": "长安老张/最重要的英文单词 have，90人误解了.mp4",
     "size_mb": 30.75,
     "duration_est": "6:31"
   },

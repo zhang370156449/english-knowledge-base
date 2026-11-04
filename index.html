@@ -205,10 +205,10 @@
         <button 
           onclick="openAddModal()" 
           class="px-3.5 py-2 rounded-xl text-sm font-medium flex items-center gap-1.5 text-white bg-clay-500 hover:bg-clay-600 shadow-sm shadow-clay-500/25 transition-all"
-          title="补充新的视频、文章或书籍"
+          title="补充新的短视频切片"
         >
           <i data-lucide="plus" class="w-4 h-4 stroke-[2.5]"></i>
-          <span class="hidden sm:inline">补充内容</span>
+          <span class="hidden sm:inline">补充视频</span>
         </button>
 
         <!-- Theme Switcher -->
@@ -250,39 +250,39 @@
       <!-- Subtle Claude Corner Accent Pattern -->
       <div class="absolute -right-16 -top-16 w-64 h-64 bg-gradient-to-br from-clay-500/10 to-transparent rounded-full blur-2xl pointer-events-none"></div>
 
-      <div class="max-w-4xl space-y-3 relative z-10">
+      <div class="w-full max-w-5xl space-y-3 relative z-10">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wide uppercase border" style="background-color: var(--bg-badge); color: var(--text-badge); border-color: var(--border-badge);">
           <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Curated Cognitive Framework
         </div>
-        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight leading-snug" style="color: var(--text-main);">
+        <h1 class="font-serif text-2xl sm:text-3xl md:text-[2.15rem] lg:text-[2.45rem] font-normal tracking-tight leading-snug sm:whitespace-nowrap" style="color: var(--text-main);">
           用母语者底层思维，重构你的英语认知体系。
         </h1>
         <p class="text-sm sm:text-base leading-relaxed max-w-3xl" style="color: var(--text-secondary);">
-          告别死记硬背。收录全网高赞词根手绘图解、语感底层心法、高频形近词辨析与发音连读逻辑，利用碎片时间在沉浸式剧场中随时随地通透掌握。
+          告别死记硬背。收录全网高赞词根手绘图解、核心高频动词逻辑、语感底层心法与英美文化习俗，随时随地在沉浸式剧场中高效通透掌握。
         </p>
       </div>
 
-      <!-- Live Knowledge Stats Counters -->
+      <!-- Live Video Stats Counters -->
       <div class="mt-7 pt-6 border-t flex flex-wrap items-center gap-6 sm:gap-10 text-sm font-medium" style="border-color: var(--border-main); color: var(--text-secondary);">
         <div class="flex items-center gap-2.5">
           <i data-lucide="film" class="w-4 h-4 text-clay-500"></i>
-          <span>短视频切片:</span>
-          <span id="statVideos" class="font-mono font-bold text-base text-clay-500">105</span>
+          <span>精选短视频:</span>
+          <span id="statVideos" class="font-mono font-bold text-base text-clay-500">159</span>
+          <span class="text-xs" style="color: var(--text-muted);">部切片</span>
         </div>
         <div class="flex items-center gap-2.5">
-          <i data-lucide="newspaper" class="w-4 h-4 text-clay-500"></i>
-          <span>深度文章:</span>
-          <span id="statArticles" class="font-mono font-bold text-base" style="color: var(--text-main);">0</span>
-          <span class="text-xs font-mono px-2 py-0.5 rounded" style="background-color: var(--bg-card-secondary); color: var(--text-muted);">可自扩充</span>
+          <i data-lucide="users" class="w-4 h-4 text-clay-500"></i>
+          <span>入驻名师/专栏:</span>
+          <span id="statAuthors" class="font-mono font-bold text-base" style="color: var(--text-main);">10</span>
+          <span class="text-xs" style="color: var(--text-muted);">位导师</span>
         </div>
         <div class="flex items-center gap-2.5">
-          <i data-lucide="library" class="w-4 h-4 text-clay-500"></i>
-          <span>精选书籍:</span>
-          <span id="statBooks" class="font-mono font-bold text-base" style="color: var(--text-main);">0</span>
-          <span class="text-xs font-mono px-2 py-0.5 rounded" style="background-color: var(--bg-card-secondary); color: var(--text-muted);">可自扩充</span>
+          <i data-lucide="sparkles" class="w-4 h-4 text-clay-500"></i>
+          <span>涵盖知识:</span>
+          <span class="font-mono font-medium text-xs sm:text-sm px-2.5 py-1 rounded-md" style="background-color: var(--bg-card-secondary); color: var(--text-secondary);">核心动词 · 介词图解 · 手绘词根 · 社交文化</span>
         </div>
-        <div class="ml-auto hidden lg:flex items-center gap-2 text-xs font-mono" style="color: var(--text-muted);">
-          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i> 100% 离线与公网分段流媒体自适应支持
+        <div class="ml-auto hidden xl:flex items-center gap-2 text-xs font-mono" style="color: var(--text-muted);">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i> 100% 极速流媒体直连 · 纯视频沉浸剧场
         </div>
       </div>
     </section>
@@ -292,24 +292,11 @@
     <!-- ======================================================== -->
     <div class="mb-7 space-y-4">
       
-      <!-- Level 1: Category Filter (All / Videos / Articles / Books) -->
-      <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b" style="border-color: var(--border-main);">
-        <div class="flex items-center gap-2">
-          <button onclick="setCategory('all')" data-cat="all" class="cat-pill pill-active px-4 py-2 rounded-xl text-sm font-semibold transition-all">
-            全部内容 (<span id="catTotal">105</span>)
-          </button>
-          <button onclick="setCategory('短视频')" data-cat="短视频" class="cat-pill px-4 py-2 rounded-xl text-sm font-semibold transition-all border" style="border-color: var(--border-main); color: var(--text-secondary);">
-            短视频剧场 (<span id="catVideos">105</span>)
-          </button>
-          <button onclick="setCategory('深度文章')" data-cat="深度文章" class="cat-pill px-4 py-2 rounded-xl text-sm font-semibold transition-all border" style="border-color: var(--border-main); color: var(--text-secondary);">
-            深度文章 (<span id="catArticles">0</span>)
-          </button>
-          <button onclick="setCategory('精选书籍')" data-cat="精选书籍" class="cat-pill px-4 py-2 rounded-xl text-sm font-semibold transition-all border" style="border-color: var(--border-main); color: var(--text-secondary);">
-            精选原版书 (<span id="catBooks">0</span>)
-          </button>
-        </div>
-
-        <!-- Level 2: Creator Filter Pills (Dynamic) -->
+      <!-- Creator / Column Filter Pills (Prominent & Direct) -->
+      <div class="flex items-center gap-3 pb-3 border-b overflow-x-auto" style="border-color: var(--border-main);">
+        <span class="text-xs font-semibold uppercase tracking-wider shrink-0 flex items-center gap-1.5" style="color: var(--text-muted);">
+          <i data-lucide="user-check" class="w-3.5 h-3.5 text-clay-500"></i> 导师专栏:
+        </span>
         <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full" id="authorPillsContainer">
           <!-- Dynamically populated via JS -->
         </div>
@@ -679,18 +666,11 @@
     // Update Numerical Counters in Hero and Navigation
     function updateCounters() {
       const vids = allItems.filter(i => i.type === 'video').length;
-      const arts = allItems.filter(i => i.type === 'article').length;
-      const bks = allItems.filter(i => i.type === 'book').length;
-      const total = allItems.length;
+      const authorsCount = new Set(allItems.filter(i => i.type === 'video').map(i => i.author)).size;
 
       const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
       setEl('statVideos', vids);
-      setEl('statArticles', arts);
-      setEl('statBooks', bks);
-      setEl('catTotal', total);
-      setEl('catVideos', vids);
-      setEl('catArticles', arts);
-      setEl('catBooks', bks);
+      setEl('statAuthors', authorsCount);
     }
 
     // Render Dynamic Author Pills
@@ -1014,8 +994,9 @@
       document.getElementById('playlistCount').innerText = `${playlistItems.length} 集`;
       renderPlaylist(item.id);
 
-      // Play video (with range request support)
-      vEl.src = item.src;
+      // Play video (with range request support & safe URL encoding)
+      const safeSrc = item.src.split('/').map(part => encodeURIComponent(part)).join('/');
+      vEl.src = safeSrc;
       vEl.load();
       vEl.play().catch(() => {});
 

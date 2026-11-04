@@ -18,7 +18,11 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 THUMB_DIR = os.path.join(BASE_DIR, 'thumbnails')
 os.makedirs(THUMB_DIR, exist_ok=True)
 
-IGNORE_FOLDERS = {'logs', 'articles', 'books', '.gemini', '.git', 'scratch', '_staging', '__pycache__', 'thumbnails', '瑞杰老师 30 天英语实战训练营(1)'}
+IGNORE_FOLDERS = {
+    'logs', 'articles', 'books', '.gemini', '.git', 'scratch', '_staging', '__pycache__', 'thumbnails',
+    '瑞杰老师 30 天英语实战训练营(1)', '瑞杰老师 30 天英语实战训练营',
+    '01.英语兔83节视频课（词汇.发音.音标.语法）', '2019版赖世雄经典英语语法视频课程'
+}
 VIDEO_EXTS = {'.mp4', '.mkv', '.mov', '.webm', '.avi'}
 
 AUTHOR_CONFIGS = {
@@ -207,6 +211,7 @@ SUBTITLE_MAP = {
     "万能词 make 的真实底层逻辑是什么？": "施加巨大压力、从无到有强行塑形的创造过程",
     "背5000个单词，不如学这30个核心词：put 篇": "把物体精准放置在特定维度的母语思维",
     "最重要的英文单词 have，90%的人都误解了": "摆脱死板拥有，理解贴标签与状态维系的真实本质",
+    "最重要的英文单词 have，90人误解了": "摆脱死板拥有，理解贴标签与状态维系的真实本质",
     "最被错误解读的词 do，它真的不是“做”": "纯粹动作驱动力的释放与承接",
     "中文翻译最错误的词 Let：松手的逻辑真相": "放行、撤销阻力、顺其自然的母语者心智",
     "被误解最深的单词 go，它居然有45种含义": "从撤销阻力与远离原点的物理意象出发，打通全部短语",
@@ -214,6 +219,7 @@ SUBTITLE_MAP = {
     "See、Look、Watch：别再凭感觉乱用了": "从被动感官摄入到主动注视的精准辨析",
     "背5000个单词，不如学这30个核心词：watch 篇": "专注盯防与动态监视的深层图式",
     "90%中国人都误解的词 Know": "从认知浸润到胸有成竹的底层逻辑",
+    "90中国人都误解的词 Know": "从认知浸润到胸有成竹的底层逻辑",
     "都是开始：为什么启动叫Start，看书叫Begin？": "突发性点火冲刺 vs 流程性渐进展开的深层区别",
     "说 can 以为是“能”，老外听到的却是“懂”": "从认知能力到掌握规律的物理词源",
     "Would 只是 Will 的过去式？它是英语里的缓冲带": "心理距离与社交礼貌的弹性开关",
@@ -233,6 +239,11 @@ SUBTITLE_MAP = {
     "OVER：从起跳、悬空到尘埃落地": "跨越障碍、完全覆盖与画圆闭合的完整轨迹",
     "搞懂 ing 的底层逻辑，瞬间秒杀 doing to do": "正在发生、浸润其中与动态画面的身临其境",
     "as 有七个意思？其实它只是一把木匠的尺子": "等长衡量、同步推演与如实映射的母语逻辑"
+}
+
+TITLE_DISPLAY_MAP = {
+    "90中国人都误解的词 Know": "90%中国人都误解的词 Know",
+    "最重要的英文单词 have，90人误解了": "最重要的英文单词 have，90%的人都误解了"
 }
 
 def extract_thumbnail_if_missing(video_path, out_thumb_path):
@@ -408,14 +419,15 @@ def main():
             # Extract clean title from filename
             m = re.match(r'^(\d+)_(.+)\.\w+$', vf)
             raw_title = m.group(2) if m else os.path.splitext(vf)[0]
+            display_title = TITLE_DISPLAY_MAP.get(raw_title, raw_title)
             
             # Check custom subtitle map
-            subtitle = SUBTITLE_MAP.get(raw_title, '')
+            subtitle = SUBTITLE_MAP.get(raw_title, '') or SUBTITLE_MAP.get(display_title, '')
             if not subtitle:
-                parts = raw_title.split(' ', 1)
+                parts = display_title.split(' ', 1)
                 subtitle = parts[1] if len(parts) > 1 else '点击立即在沉浸剧场中播放与深度拆解'
                 
-            kw = determine_smart_keyword(raw_title, vf)
+            kw = determine_smart_keyword(display_title, vf)
             
             item_tags = [author_name, cfg['default_tag'], kw]
             if author_name == '英语文化与习俗' and idx in CULTURE_CREATOR_MAP:
@@ -426,7 +438,7 @@ def main():
                 'id': f"{author_prefix}_{idx:02d}",
                 'num': idx,
                 'keyword': kw,
-                'title': raw_title,
+                'title': display_title,
                 'subtitle': subtitle,
                 'author': author_name,
                 'author_desc': cfg['desc'],
