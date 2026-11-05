@@ -91,6 +91,12 @@ AUTHOR_CONFIGS = {
         'avatar': 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=faces',
         'prefix': 'szl',
         'default_tag': '听力底层'
+    },
+    '英语Linlin老师': {
+        'desc': '自然拼读体系 · 字母组合拼读实战 · 常见不发音口诀 · 零基础语法',
+        'avatar': 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&fit=crop&crop=faces',
+        'prefix': 'll',
+        'default_tag': '自然拼读'
     }
 }
 
@@ -341,6 +347,35 @@ SUNZHILI_META = {
     31: ("记忆锚点", "增加记忆锚点，轻松记忆高频单词，告别遗忘曲线", ["孙志立英语", "记忆锚点", "高效记忆"])
 }
 
+LINLIN_META = {
+    1: ("自然拼读", "零基础入门自然拼读的核心步骤与系统学习路径，建立见词能读底层认知", ["英语Linlin老师", "自然拼读", "速成指南", "Phonics"]),
+    2: ("自然拼读", "打通单词认读与拼写双向通道，彻底告别死记硬背字母顺序", ["英语Linlin老师", "自然拼读", "单词认读", "Phonics"]),
+    3: ("自然拼读", "掌握英语常见字母及字母组合音形对应规则，一秒解码常见高频词汇", ["英语Linlin老师", "自然拼读", "单词直读", "Phonics"]),
+    4: ("自然拼读", "透彻解析自然拼读与国际音标的区别、适用场景与协同进阶技巧", ["英语Linlin老师", "自然拼读", "音标辨析", "Phonics"]),
+    5: ("自然拼读", "高效拆分单词音节与拼读记忆底层逻辑，轻松实现长难词速记", ["英语Linlin老师", "自然拼读", "学霸心法", "Phonics"]),
+    6: ("自然拼读", "通过听音辨音直击单词拼写结构，让英语单词默写百发百中", ["英语Linlin老师", "自然拼读", "默写心法", "Phonics"]),
+    7: ("字母组合", "全景梳理英语常见元音组合拼读规则，攻克发音与拼读最易混淆关卡", ["英语Linlin老师", "字母组合", "元音组合", "Phonics"]),
+    8: ("字母组合", "解析覆盖超50%词汇量的高频字母组合规律，拼读效率直线翻倍", ["英语Linlin老师", "字母组合", "高频组合", "Phonics"]),
+    9: ("字母组合", "掌握常见辅音组合ch的清辅音拼读规则与发音口型定位", ["英语Linlin老师", "字母组合", "ch组合", "Phonics"]),
+    10: ("字母组合", "透析wh与wr等w相关字母组合的纯正拼读与静音辨析", ["英语Linlin老师", "字母组合", "w组合", "Phonics"]),
+    11: ("字母组合", "攻破gh在词首、词中、词尾的发音变化与不发音特例", ["英语Linlin老师", "字母组合", "gh组合", "Phonics"]),
+    12: ("字母组合", "掌握gu组合在不同词汇中的辅音拼读要领，纠正常见中式误读", ["英语Linlin老师", "字母组合", "gu组合", "Phonics"]),
+    13: ("字母组合", "系统讲解or在重读音节及w后的特殊发音规律，彻底分清长短元音", ["英语Linlin老师", "字母组合", "or组合", "Phonics"]),
+    14: ("字母组合", "通过节奏感律动带读掌握er组合不同位置的发音轻重弱化", ["英语Linlin老师", "字母组合", "er组合", "Phonics"]),
+    15: ("字母组合", "一网打尽ea长音/iː/、短音/e/及特殊音/eɪ/，告别拼读陷阱", ["英语Linlin老师", "字母组合", "ea组合", "Phonics"]),
+    16: ("字母组合", "以顺口溜口诀秒分双元音ai与短元音a的口型开合与发音时长", ["英语Linlin老师", "字母组合", "ai与a", "Phonics"]),
+    17: ("字母组合", "掌握爆破辅音c与流音l的快速舌位转换，拼读单词流畅无阻", ["英语Linlin老师", "字母组合", "cl组合", "Phonics"]),
+    18: ("字母组合", "核心名词词尾tion的一步到位发音规律，背一组搞定一串大词", ["英语Linlin老师", "字母组合", "tion词缀", "Phonics"]),
+    19: ("字母组合", "一次厘清字母c、k与组合ck在词首词尾的选词拼写规律", ["英语Linlin老师", "字母组合", "ck辨析", "Phonics"]),
+    20: ("字母组合", "结合自然语境与音形联想，快速内化复杂字母组合的拼读模式", ["英语Linlin老师", "字母组合", "联想速记", "Phonics"]),
+    21: ("发音规律", "26个英文字母Letter Name与Letter Sound的标准纯正示范精讲", ["英语Linlin老师", "发音规律", "26个字母", "Pronunciation"]),
+    22: ("发音规律", "总结英语单词中b、k、w、l等字母不发音的黄金规律与经典例词", ["英语Linlin老师", "发音规律", "不发音规则", "Pronunciation"]),
+    23: ("发音规律", "顺口溜神技归纳常见辅音静音现象，见词自知何时不发音", ["英语Linlin老师", "发音规律", "辅音静音", "Pronunciation"]),
+    24: ("高频语法", "以生动直观的生活空间与时间维度，秒懂介词on与in的核心差异", ["英语Linlin老师", "高频语法", "介词on与in", "Grammar"]),
+    25: ("高频语法", "30秒厘清方向目标指向to与受益目的for的语法逻辑与考点", ["英语Linlin老师", "高频语法", "介词to与for", "Grammar"]),
+    26: ("高频语法", "将易混语法考点化为朗朗上口的口诀，零基础也能轻松掌握", ["英语Linlin老师", "高频语法", "语法顺口溜", "Grammar"])
+}
+
 def extract_thumbnail_if_missing(video_path, out_thumb_path):
     if os.path.exists(out_thumb_path) and os.path.getsize(out_thumb_path) > 1024:
         return True
@@ -559,6 +594,24 @@ def main():
                     kw = '听力底层'
                     subtitle = raw_title
                     item_tags = ['孙志立英语', '听力底层']
+            elif author_name == '英语Linlin老师':
+                m_ll = re.match(r'^(\d+)_(.+)\.mp4$', vf)
+                if m_ll:
+                    ll_idx = int(m_ll.group(1))
+                    clean_title = m_ll.group(2).replace('_', ' ')
+                    if ll_idx in LINLIN_META:
+                        kw, subtitle, item_tags = LINLIN_META[ll_idx]
+                    else:
+                        kw = '自然拼读'
+                        subtitle = clean_title
+                        item_tags = ['英语Linlin老师', '自然拼读']
+                    display_title = clean_title
+                else:
+                    raw_title = os.path.splitext(vf)[0]
+                    display_title = raw_title
+                    kw = '自然拼读'
+                    subtitle = raw_title
+                    item_tags = ['英语Linlin老师', '自然拼读']
             else:
                 # Extract clean title from filename
                 m = re.match(r'^(\d+)_(.+)\.\w+$', vf)
